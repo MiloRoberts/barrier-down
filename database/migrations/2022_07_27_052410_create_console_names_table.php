@@ -16,7 +16,7 @@ class CreateConsoleNamesTable extends Migration
         Schema::create('console_names', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

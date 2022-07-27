@@ -16,7 +16,7 @@ class CreateConsoleMakersTable extends Migration
         Schema::create('console_makers', function (Blueprint $table) {
             $table->id();
             $table->string('maker');
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

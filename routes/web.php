@@ -22,9 +22,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('games/{game}', function ($slug) {
+Route::get('games/{game}', function ($id) {
 
     return view('game', [
-        'game' => Game::findOrFail($slug)
+        'game' => Game::findOrFail($id)
     ]);
 });

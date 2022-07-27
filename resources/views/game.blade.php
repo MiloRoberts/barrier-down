@@ -1,6 +1,6 @@
 <x-layout>
     <h1>
-        <a href="/games/{{ $game->slug }}">
+        <a href="/games/{{ $game->id }}">
             {{ $game->title}}
         </a>
     </h1>

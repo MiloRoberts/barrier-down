@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Game_Title extends Model
+class GameTitle extends Model
 {
     use HasFactory;
 }
