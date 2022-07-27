@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    $games = Game::all();
+
     return view('games', [
         'games' => Game::all()
     ]);
@@ -23,6 +25,6 @@ Route::get('/', function () {
 Route::get('games/{game}', function ($slug) {
 
     return view('game', [
-        'game' => Game::find($slug)
+        'game' => Game::findOrFail($slug)
     ]);
 });
