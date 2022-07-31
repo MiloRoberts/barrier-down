@@ -22,7 +22,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('games/{game}', function ($id) {
+Route::get('games/{game}', function (Game $game) {
 
     return view('game', [
         'game' => Game::findOrFail($id)
