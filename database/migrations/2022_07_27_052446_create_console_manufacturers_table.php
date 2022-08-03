@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsoleMakersTable extends Migration
+class CreateConsoleManufacturersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateConsoleMakersTable extends Migration
      */
     public function up()
     {
-        Schema::create('console_makers', function (Blueprint $table) {
+        Schema::create('console_manufacturers', function (Blueprint $table) {
             $table->id();
-            $table->string('maker');
+            $table->string('manufacturer');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateConsoleMakersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('console_makers');
+        Schema::dropIfExists('console_manufacturers');
     }
 }
