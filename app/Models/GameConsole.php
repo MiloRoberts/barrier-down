@@ -9,5 +9,17 @@ class GameConsole extends Model
 {
     use HasFactory;
 
-    // protect what?
+    protected $fillable = [];
+
+    public function game() {
+        return $this->hasMany(Game::class);
+    }
+
+    public function console_manufacturer() {
+        return $this->belongsTo(ConsoleManufacturer::class);
+    }
+
+    public function console_name() {
+        return $this->belongsTo(ConsoleName::class);
+    }
 }

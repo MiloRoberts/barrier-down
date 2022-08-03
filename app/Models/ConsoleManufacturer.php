@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class ConsoleManufacturer extends Model
 {
     use HasFactory;
+
+    protected $fillable = [];
+
+    public function game_console() {
+        return $this->hasMany(GameConsole::class);
+    }
 }

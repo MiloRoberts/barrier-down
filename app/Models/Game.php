@@ -9,13 +9,13 @@ class Game extends Model
 {
     use HasFactory;
 
-    //  protect what?
+    protected $fillable = [];
 
     public function game_console() {
-        
+        return $this->belongsTo(GameConsole::class);
     }
 
     public function game_title() {
-        
+        return $this->belongsTo(GameTitle::class);
     }
 }
