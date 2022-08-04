@@ -44,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Is this pivot correct?
+    public function games() {
+        return $this->belongsToMany(Game::class)
+            ->withPivot('learning');
+    }
+
+    // Game::class, 'games_users', 'game_id', 'user_id'
 }

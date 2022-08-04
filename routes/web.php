@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $games = Game::all();
-
     return view('games', [
         'games' => Game::all()
     ]);
@@ -28,3 +26,11 @@ Route::get('games/{game}', function (Game $game) {
         'game' => $game
     ]);
 });
+
+Route::get('consoles/{console}', function (Console $console) {
+    return view('games', [
+        'games' => $console->games
+    ]);
+});
+
+// NOTE: Remember to make About page visible to non-logged in users 
