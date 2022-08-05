@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGamesUsersTable extends Migration
+class CreateGamesLexemesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateGamesUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('games_users', function (Blueprint $table) {
+        Schema::create('games_lexemes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('game_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->boolean('contributor')->default(false);
-            $table->boolean('learning')->default(false);
+            $table->foreignId('lexeme_id')->constrained();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateGamesUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games_users');
+        Schema::dropIfExists('games_lexemes');
     }
 }

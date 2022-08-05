@@ -18,10 +18,18 @@ class Game extends Model
     public function game_title() {
         return $this->belongsTo(GameTitle::class);
     }
+
+    public function lexeme() {
+        return $this->belongsToMany(Lexeme::class);
+    }
+
+    public function screenshot() {
+        return $this->hasMany(Screenshot::class);
+    }
     
     // Is this pivot correct?
     public function users() {
         return $this->belongsToMany(User::class)
-            ->withPivot('learning');
+            ->withPivot('contributor', 'learning');
     }
 }

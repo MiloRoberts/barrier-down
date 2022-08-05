@@ -48,8 +48,12 @@ class User extends Authenticatable
     // Is this pivot correct?
     public function games() {
         return $this->belongsToMany(Game::class)
-            ->withPivot('learning');
+            ->withPivot('contributor', 'learning');
     }
 
     // Game::class, 'games_users', 'game_id', 'user_id'
+    
+    public function lexeme() {
+        return $this->belongsToMany(Lexeme::class);
+    }
 }
