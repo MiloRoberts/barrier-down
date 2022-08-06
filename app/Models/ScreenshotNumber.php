@@ -11,7 +11,7 @@ class ScreenshotNumber extends Model
 
     protected $fillable = [];
 
-    public function screenshot() {
+    public function screenshots() {
         return $this->hasMany(Screenshot::class);
     }
 }

@@ -9,12 +9,12 @@ class Lexeme extends Model
 {
     use HasFactory;
 
-    public function game() {
+    public function games() {
         return $this->belongsToMany(Game::class);
     }
 
     // Is this pivot correct?
-    public function user() {
+    public function users() {
         return $this->belongsToMany(User::class)
             ->withPivot('learning');
     }

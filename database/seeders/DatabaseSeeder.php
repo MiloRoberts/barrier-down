@@ -38,12 +38,14 @@ class DatabaseSeeder extends Seeder
 
         GameConsole::create([
             'console_manufacturer_id' => 1,
-            'console_name_id' => 1
+            'console_name_id' => 1,
+            'slug' => 'sony-playstation'
         ]);
 
         GameConsole::create([
             'console_manufacturer_id' => 2,
-            'console_name_id' => 2
+            'console_name_id' => 2,
+            'slug' => 'nintendo-super-famicom'
         ]);
 
         GameTitle::create([
@@ -58,12 +60,16 @@ class DatabaseSeeder extends Seeder
 
         Game::create([
             'game_console_id' => 1,
-            'game_title_id' => 1
+            'game_title_id' => 1,
+            // maybe get a slug from a method instead
+            'slug' => 'culdcept-expansion-plus-sony-playstation'
         ]);
 
         Game::create([
             'game_console_id' => 2,
-            'game_title_id' => 2
+            'game_title_id' => 2,
+            // maybe get a slug from a method instead
+            'slug' => 'super-puyo-puyo-tsuu-remix-super-nintendo'
         ]);
     }
 }

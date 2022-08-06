@@ -23,7 +23,7 @@ class Game extends Model
         return $this->belongsToMany(Lexeme::class);
     }
 
-    public function screenshot() {
+    public function screenshots() {
         return $this->hasMany(Screenshot::class);
     }
     

@@ -27,9 +27,9 @@ Route::get('games/{game}', function (Game $game) {
     ]);
 });
 
-Route::get('consoles/{console}', function (Console $console) {
+Route::get('gameconsoles/{gameconsole}', function (GameConsole $gameconsole) {
     return view('games', [
-        'games' => $console->games
+        'games' => $gameconsole->games
     ]);
 });
 

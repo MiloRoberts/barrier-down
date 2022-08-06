@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     // Game::class, 'games_users', 'game_id', 'user_id'
     
-    public function lexeme() {
+    public function lexemes() {
         return $this->belongsToMany(Lexeme::class);
     }
 }

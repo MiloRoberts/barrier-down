@@ -11,7 +11,7 @@ class ConsoleManufacturer extends Model
 
     protected $fillable = [];
 
-    public function game_console() {
+    public function game_consoles() {
         return $this->hasMany(GameConsole::class);
     }
 }

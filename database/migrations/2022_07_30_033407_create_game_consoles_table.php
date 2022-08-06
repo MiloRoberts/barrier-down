@@ -19,6 +19,8 @@ class CreateGameConsolesTable extends Migration
             // NOTE: This is equivalent to ...
             // $table->foreign('console_name_id')->references('id')->on('console_names');
             $table->foreignId('console_manufacturer_id')->constrained();
+            // maybe get a slug from a method instead
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
