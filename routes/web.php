@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Game;
+use App\Models\GameConsole;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,18 +17,23 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('games', [
-        'games' => Game::all()
+        'games' => Game::latest()->with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')->get()
+        // ->sortBy('game_title') // I think I need JOIN for this to work
+        // below makes unnecessary extra queries (see clockwork app)
+        // 'games' => Game::all()
     ]);
 });
 
-Route::get('games/{game}', function (Game $game) {
+Route::get('games/{game:slug}', function (Game $game) {
 
     return view('game', [
         'game' => $game
     ]);
 });
 
-Route::get('gameconsoles/{gameconsole}', function (GameConsole $gameconsole) {
+Route::get('gameconsoles/{gameconsole:slug}', function (GameConsole $gameconsole) {
+    // still have some redundancy below in queries (see clockwork app)
+    // check out eager loading
     return view('games', [
         'games' => $gameconsole->games
     ]);

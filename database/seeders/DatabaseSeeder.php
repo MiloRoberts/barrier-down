@@ -20,56 +20,102 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        ConsoleManufacturer::create([
+        // clears tables of data to allow reseeding without remigrating
+        // seems that all tables must be truncated for this to work
+        // Game::truncate();
+        // GameTitle::truncate();
+        // GameConsole::truncate();
+        // ConsoleManufacturer::truncate();
+        // ConsoleName::truncate();
+
+        $sony = ConsoleManufacturer::create([
             'manufacturer' => 'Sony'
         ]);
 
-        ConsoleManufacturer::create([
+        $nintendo = ConsoleManufacturer::create([
             'manufacturer' => 'Nintendo'
         ]);
 
-        ConsoleName::create([
+        $sega = ConsoleManufacturer::create([
+            'manufacturer' => 'Sega'
+        ]);
+
+        $playstation = ConsoleName::create([
             'name' => 'Playstation'
         ]);
 
-        ConsoleName::create([
+        $super_famicom = ConsoleName::create([
             'name' => 'Super Famicom'
         ]);
 
-        GameConsole::create([
-            'console_manufacturer_id' => 1,
-            'console_name_id' => 1,
+        $saturn = ConsoleName::create([
+            'name' => 'Saturn'
+        ]);
+
+        $sony_playstation = GameConsole::create([
+            'console_manufacturer_id' => $sony->id,
+            'console_name_id' => $playstation->id,
             'slug' => 'sony-playstation'
         ]);
 
-        GameConsole::create([
-            'console_manufacturer_id' => 2,
-            'console_name_id' => 2,
+        $nintendo_super_famicom = GameConsole::create([
+            'console_manufacturer_id' => $nintendo->id,
+            'console_name_id' => $super_famicom->id,
             'slug' => 'nintendo-super-famicom'
         ]);
 
-        GameTitle::create([
+        $sega_saturn = GameConsole::create([
+            'console_manufacturer_id' => $sega->id,
+            'console_name_id' => $saturn->id,
+            'slug' => 'sega-saturn'
+        ]);
+
+        $culdcept_expansion_plus = GameTitle::create([
             'english_title' => 'Culdcept Expansion Plus',
             'japanese_title' => 'カルドセプト エキスパンション・プラス'
         ]);
 
-        GameTitle::create([
+        $super_puyo_puyo_tsuu_remix = GameTitle::create([
             'english_title' => 'Super Puyo Puyo Tsuu Remix',
             'japanese_title' => 'すーぱーぷよぷよ通リミックス'
         ]);
 
+        $culdcept = GameTitle::create([
+            'english_title' => 'Culdcept',
+            'japanese_title' => 'カルドセプト'
+        ]);
+
+        $psychic_force_2 = GameTitle::create([
+            'english_title' => 'Psychic Force 2',
+            'japanese_title' => 'サイキックフォース2'
+        ]);
+
         Game::create([
-            'game_console_id' => 1,
-            'game_title_id' => 1,
+            'game_console_id' => $sony_playstation->id,
+            'game_title_id' => $culdcept_expansion_plus->id,
             // maybe get a slug from a method instead
             'slug' => 'culdcept-expansion-plus-sony-playstation'
         ]);
 
         Game::create([
-            'game_console_id' => 2,
-            'game_title_id' => 2,
+            'game_console_id' => $nintendo_super_famicom->id,
+            'game_title_id' => $super_puyo_puyo_tsuu_remix->id,
             // maybe get a slug from a method instead
             'slug' => 'super-puyo-puyo-tsuu-remix-super-nintendo'
+        ]);
+
+        Game::create([
+            'game_console_id' => $sega_saturn->id,
+            'game_title_id' => $culdcept->id,
+            // maybe get a slug from a method instead
+            'slug' => 'culdcept-sega-saturn'
+        ]);
+
+        Game::create([
+            'game_console_id' => $sony_playstation->id,
+            'game_title_id' => $psychic_force_2->id,
+            // maybe get a slug from a method instead
+            'slug' => 'psychic-force-2-sony-playstation'
         ]);
     }
 }
