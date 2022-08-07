@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLexemesTable extends Migration
+class CreateLexemeItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateLexemesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lexemes', function (Blueprint $table) {
+        Schema::create('lexeme_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('lexeme_item_id')->constrained();
-            $table->foreignId('lexeme_meaning_id')->constrained();
-            $table->foreignId('lexeme_reading_id')->constrained();
+            $table->string('item');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateLexemesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lexemes');
+        Schema::dropIfExists('lexeme_items');
     }
 }

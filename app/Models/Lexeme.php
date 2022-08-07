@@ -14,6 +14,22 @@ class Lexeme extends Model
     public function games() {
         return $this->belongsToMany(Game::class);
     }
+    
+    public function kanji() {
+        return $this->belongsToMany(KanjiClass::class);
+    }
+
+    public function lexeme_item() {
+        return $this->belongsTo(LexemeItem::class);
+    }
+
+    public function lexeme_meaning() {
+        return $this->belongsTo(LexemeMeaning::class);
+    }
+    
+    public function lexeme_reading() {
+        return $this->belongsTo(LexemeReading::class);
+    }
 
     public function lexical_classes() {
         return $this->belongsToMany(LexicalClass::class);
