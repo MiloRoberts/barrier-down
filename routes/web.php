@@ -2,6 +2,7 @@
 
 use App\Models\Game;
 use App\Models\GameConsole;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,4 +40,9 @@ Route::get('gameconsoles/{gameconsole:slug}', function (GameConsole $gameconsole
     ]);
 });
 
-// NOTE: Remember to make About page visible to non-logged in users 
+Route::get('register', [RegisterController::class, 'create']);
+Route::post('register', [RegisterController::class, 'store']);
+
+// NOTE: Remember to make About page visible to non-logged in users
+
+// NOTE: Don't forget to add caching

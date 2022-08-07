@@ -9,8 +9,14 @@ class Lexeme extends Model
 {
     use HasFactory;
 
+    protected $fillable = [];
+
     public function games() {
         return $this->belongsToMany(Game::class);
+    }
+
+    public function lexical_classes() {
+        return $this->belongsToMany(LexicalClass::class);
     }
 
     // Is this pivot correct?
