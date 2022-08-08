@@ -16,8 +16,13 @@ class Lexeme extends Model
     }
     
     public function kanji() {
-        return $this->belongsToMany(KanjiClass::class);
+        return $this->belongsToMany(LexemeClass::class);
     }
+
+    // // I guess this is unnecessary after all.
+    // public function kanji() {
+    //     return $this->belongsToMany(LexemeClass::class, 'kanji_lexemes', 'lexeme_id', 'kanji_id');
+    // }
 
     public function lexeme_item() {
         return $this->belongsTo(LexemeItem::class);

@@ -15,6 +15,9 @@ class CreateKanjiTable extends Migration
     {
         Schema::create('kanji', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('kanji_character_id')->constrained();
+            $table->foreignId('kanji_meaning_id')->constrained();
+            $table->foreignId('kanji_reading_id')->constrained();
             $table->timestamps();
         });
     }

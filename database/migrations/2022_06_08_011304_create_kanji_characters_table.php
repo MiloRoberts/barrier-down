@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateKanjiLexemesTable extends Migration
+class CreateKanjiCharactersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateKanjiLexemesTable extends Migration
      */
     public function up()
     {
-        Schema::create('kanji_lexemes', function (Blueprint $table) {
+        Schema::create('kanji_characters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('kanji_id')->constrained('kanji');
-            $table->foreignId('lexeme_id')->constrained();
+            $table->string('character'); // also set as unique?
+            $table->string('reference')->unique();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateKanjiLexemesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kanji_lexemes');
+        Schema::dropIfExists('kanji_characters');
     }
 }
