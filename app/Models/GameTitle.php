@@ -14,4 +14,6 @@ class GameTitle extends Model
     public function games() {
         return $this->hasMany(Game::class);
     }
+
+    // I should perhaps add a function to return the english_title as the default when searching for the title.
 }

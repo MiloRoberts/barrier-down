@@ -59,6 +59,7 @@ class User extends Authenticatable
     }
 
     // see laracasts episode 46 at 3:00 for more on eloquent mutators
+    // get___Attribute is usable for $this->property and such
     public function setPasswordAttribute($password) {
         $this->attributes['password'] = bcrypt($password);
     }

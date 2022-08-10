@@ -1,18 +1,7 @@
 <x-layout>
-    <form action="/register" method="post">
+    <h1>Log In</h1>
+    <form action="/login" method="post">
         @csrf
-        <div>
-            <label for="name">
-                Name
-            </label>
-            <input type="text" name="name" id="name" value="{{ old('name') }}" required>
-        </div>
-        <div>
-            <label for="username">
-                Username
-            </label>
-            <input type="text" name="username" id="username" value="{{ old('username') }}" required>
-        </div>
         <div>
             <label for="email">
                 Email
@@ -32,7 +21,7 @@
         </div>
         <div>
             <button type="submit">
-                Submit
+                Log In
             </button>
         </div>
         @if ($errors->any())

@@ -3,6 +3,7 @@
 use App\Models\Game;
 use App\Models\GameConsole;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,12 +19,24 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('games', [
-        'games' => Game::latest()->with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')->get()
+        'games' => Game::with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')
+            ->get()
+            ->sortBy('game_title.english_title')
         // ->sortBy('game_title') // I think I need JOIN for this to work
         // below makes unnecessary extra queries (see clockwork app)
         // 'games' => Game::all()
     ]);
 });
+
+// // Ben did it this way.
+// Route::get('/', function () {
+//     $g = Game::with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')
+//         ->get()
+//         ->sortBy('game_title.english_title'); 
+//         //dd($g[0]);
+//     return view('games', ['games' => $g]
+//         );
+// });
 
 Route::get('games/{game:slug}', function (Game $game) {
 
@@ -40,8 +53,13 @@ Route::get('gameconsoles/{gameconsole:slug}', function (GameConsole $gameconsole
     ]);
 });
 
-Route::get('register', [RegisterController::class, 'create']);
-Route::post('register', [RegisterController::class, 'store']);
+Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
+
+Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
+Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
 
 // NOTE: Remember to make About page visible to non-logged in users
 
