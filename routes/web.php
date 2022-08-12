@@ -2,7 +2,10 @@
 
 use App\Models\Game;
 use App\Models\GameConsole;
+use App\Http\Controllers\GamesController;
+use App\Http\Controllers\LexemesController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ScreenshotsController;
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,7 +25,7 @@ Route::get('/', function () {
         'games' => Game::with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')
             ->get()
             ->sortBy('game_title.english_title')
-        // ->sortBy('game_title') // I think I need JOIN for this to work
+            // note that it must use .english_title
         // below makes unnecessary extra queries (see clockwork app)
         // 'games' => Game::all()
     ]);
@@ -60,6 +63,10 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
+Route::get('admin/games/create', [GamesController::class, 'create'])->middleware('admin');
+// TO DO: have controller below handle spreadsheet uploads
+Route::get('admin/lexemes/create', [LexemesController::class, 'create'])->middleware('admin');
+Route::get('admin/screenshots/create', [ScreenshotsController::class, 'create'])->middleware('admin');
 
 // NOTE: Remember to make About page visible to non-logged in users
 
