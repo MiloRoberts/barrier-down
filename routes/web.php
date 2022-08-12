@@ -2,10 +2,10 @@
 
 use App\Models\Game;
 use App\Models\GameConsole;
-use App\Http\Controllers\GamesController;
+// use App\Http\Controllers\GamesController; //probably won't use after all
 use App\Http\Controllers\LexemesController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ScreenshotsController;
+// use App\Http\Controllers\ScreenshotsController; //probably won't use after all
 use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
@@ -63,10 +63,9 @@ Route::get('login', [SessionsController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
-Route::get('admin/games/create', [GamesController::class, 'create'])->middleware('admin');
 // TO DO: have controller below handle spreadsheet uploads
 Route::get('admin/lexemes/create', [LexemesController::class, 'create'])->middleware('admin');
-Route::get('admin/screenshots/create', [ScreenshotsController::class, 'create'])->middleware('admin');
+Route::post('admin/lexemes', [LexemesController::class, 'store'])->middleware('admin');
 
 // NOTE: Remember to make About page visible to non-logged in users
 

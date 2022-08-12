@@ -1,0 +1,241 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+:root {
+  --color1: #ffffff; /* exact color undetermined */
+  --color2: #000000; /* exact color undetermined */
+  --color3: #bfcde0; /* exact color undetermined */
+  --color-bright: #ff9f1c; /* exact color undetermined */
+  --color-dark: #256eff; /* exact color undetermined */
+  --highlight: rgba(111, 111, 111, 0.4); /* change later? */
+  --header-height: 10vh;
+}
+
+body {
+  background-color: var(--color2); /* this might be deleted */
+  color: var(--color1);
+}
+
+#nav-bar {
+  display: flex;
+  height: var(--header-height); /* so other changes won't break it */
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  font-size: 7.2vw; /* previously 4.8vh */
+  font-weight: bold;
+}
+
+/* there should be slightly more space between links in mobile view to reduce misclicks */
+/* compare it to memrise's mobile view */
+#nav-logo,
+#nav-burger {
+  line-height: var(--header-height); /* aligns text vertically */
+}
+
+#nav-logo,
+#nav-burger,
+#nav-burger-links ul li a {
+  /* border: 3px solid var(--color1); */
+  color: var(--color1); /* also overrides logo link being blue */
+}
+
+#nav-logo {
+  width: calc(100% - var(--header-height));
+  text-decoration: none;
+  letter-spacing: 0.2rem; /* make a variable? */
+}
+
+#nav-burger {
+  width: var(--header-height);
+}
+
+#nav-burger-links {
+  display: none;
+  position: absolute;
+  width: calc(100% - 16px);
+  background-color: var(--color2);
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+#nav-burger-links ul {
+  list-style-type: none;
+  width: 100%;
+  padding-left: 0%;
+  margin-top: 0%;
+  font-size: 7.4vw; /* previously 5vh */
+}
+
+#nav-logo:hover,
+#nav-burger:hover,
+#nav-burger-links li:hover {
+  background-color: var(--highlight);
+}
+
+#nav-burger-links ul li a {
+  display: block;
+  line-height: 14vh;
+  text-decoration: none;
+  text-align: center;
+}
+
+#nav-burger-links ul li div {
+  display: block;
+  line-height: 14vh;
+  text-decoration: none;
+  text-align: center;
+}
+
+.nav-link,
+.single-nav-link {
+  display: none;
+}
+
+.single-nav-link:hover,
+.nav-link:hover {
+  cursor: pointer;
+  background-color: var(--highlight);
+}
+
+.special-heading-dark {
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  letter-spacing: 0.3rem;
+  text-shadow: -1px -1px 0 #256eff, 1px -1px 0 #256eff, -1px 1px 0 #256eff,
+    1px 1px 0 #256eff;
+}
+
+.special-heading-bright {
+  text-align: center;
+  color: black;
+  font-weight: bolder;
+  letter-spacing: 0.3rem;
+  text-shadow: -1px -1px 0 var(--color-bright), 1px -1px 0 var(--color-bright),
+    -1px 1px 0 var(--color-bright), 1px 1px 0 var(--color-bright);
+}
+
+/* NEW LOGO CSS WHICH REQUIRES NEW SPANS IN THE HTML */
+/* #logo-span-left {
+  text-shadow: 0.25rem -0.1rem 0.2rem #256eff;
+  margin-right: 0.25rem;
+}
+
+#logo-span-right {
+  text-shadow: -0.25rem -0.1rem 0.2rem #256eff;
+  margin-left: 0.25rem;
+} */
+
+/* AND HERE'S A SIMPLE ALTERNATIVE */
+#logo-span-right {
+  color: #bfcde0;
+}
+/* END NEW CODE */
+
+/* Review my naming conventions. Maybe I should have an id for the anchors in the burger links. Also, what about using dashes in the IDs? Is that commonplace or should I stick to camel case? */
+
+/* Should I make mobile font larger than 16px for readablility? */
+
+@media screen and (min-width: 700px) {
+  #nav-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #nav-bar {
+    font-size: 3.2vw;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 2.6vw;
+    font-family: "Times New Roman", Times, serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    line-height: var(--header-height);
+    width: 13%;
+    text-decoration: none;
+    color: gray;
+  }
+
+  .single-nav-link {
+    font-size: 4vw;
+    font-family: "Times New Roman", Times, serif;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    line-height: var(--header-height);
+    width: 30%;
+    color: gray;
+  }
+
+  #nav-burger {
+    display: none;
+  }
+
+  .special-heading-bright,
+  .special-heading-dark {
+    font-size: 3vw;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  th,
+  td {
+    font-size: large;
+  }
+
+  #nav-burger-links {
+    display: none;
+    visibility: hidden;
+  }
+  .burger-link {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  #nav-logo {
+    width: 35%;
+  }
+  #nav-bar {
+    font-size: 3.4vw;
+  }
+
+  .nav-link {
+    font-size: 2.6vw;
+    line-height: var(--header-height);
+    width: 13%;
+  }
+
+  .single-nav-link {
+    font-size: 4vw;
+    line-height: var(--header-height);
+    width: 30%;
+  }
+}
+
+/* @media screen and (min-width: 1250px) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  th,
+  td {
+    font-size: larger;
+  }
+} */

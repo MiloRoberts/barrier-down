@@ -1,0 +1,61 @@
+img {
+  width: 60%;
+  margin: 0.2rem;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.game-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 0.4rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+  width: 96vw;
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+.game-container:hover {
+  font-size: large;
+  color: #ff9f1c;
+  font-weight: bold;
+}
+
+.game-link {
+  text-decoration: none;
+  color: white;
+}
+
+#games-double-rows {
+  display: none;
+}
+
+/* NOTE: transitions don't work with flex-direction */
+/* .game-container:hover {
+  transition-property: flex-direction;
+  flex-direction: row-reverse;
+} */
+
+@media screen and (min-width: 700px) {
+  #nav-logo {
+    width: 35%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .game-container {
+    width: 48vw;
+  }
+  #games-single-rows {
+    display: none;
+  }
+  #games-double-rows {
+    display: flex;
+  }
+}

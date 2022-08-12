@@ -1,0 +1,236 @@
+.title-screen > img {
+  margin-top: 1rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#slideshow-container {
+  height: 224px;
+  position: relative;
+  overflow: hidden;
+}
+
+#slideshow-container > div {
+  position: absolute;
+  left: 100%;
+  bottom: 0;
+  animation: 24s moveSlide infinite ease-out;
+}
+
+@keyframes moveSlide {
+  0% {
+    left: 100%;
+  }
+  3% {
+    left: 0%;
+  }
+  16.66% {
+    left: 0%;
+  }
+  19.66% {
+    left: -100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+
+#slideshow-container > div:nth-child(1) {
+  animation-delay: 0s;
+}
+#slideshow-container > div:nth-child(2) {
+  animation-delay: 4s;
+}
+#slideshow-container > div:nth-child(3) {
+  animation-delay: 8s;
+}
+#slideshow-container > div:nth-child(4) {
+  animation-delay: 12s;
+}
+#slideshow-container > div:nth-child(5) {
+  animation-delay: 16s;
+}
+#slideshow-container > div:nth-child(6) {
+  animation-delay: 20s;
+}
+
+h3 {
+  text-align: center;
+}
+
+h4 {
+  color: #256eff;
+}
+
+table {
+  table-layout: fixed;
+  width: 94.5vw;
+  /* border: 2px solid #bfcde0; */
+  border-top: 1vw solid #256eff;
+  border-bottom: 1vw solid #256eff;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+th,
+tr {
+  text-align: left;
+}
+
+.table-heading {
+  text-align: center;
+  /* background-color: #256eff; */
+  /* background-color: #bfcde0; */
+  /* background-color: black; */
+  /* color: black; */
+  color: #ff9f1c;
+}
+
+/* .available {
+  color: #ff9f1c;
+} */
+
+/* .table-sub-heading {
+  padding-right: 2rem;
+} */
+
+#alt-table {
+  display: none;
+}
+
+#gallery-container,
+#alt-gallery-column {
+  display: none;
+}
+
+@media screen and (min-width: 400px) {
+  #slideshow-container {
+    display: none;
+  }
+
+  #gallery-container {
+    display: block;
+  }
+  .gallery-row {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .gallery-column {
+    width: 16.66%;
+  }
+
+  .gallery-column > img {
+    cursor: pointer;
+    max-width: 100%;
+    opacity: 0.5;
+  }
+
+  .gallery-column > img:hover {
+    opacity: 0.5;
+    opacity: 1;
+  }
+
+  #enlarged-image {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  #alt-gallery-column {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 0.3rem;
+  }
+  .moveable-image {
+    display: none;
+  }
+
+  .gallery-column {
+    width: 33%;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  #alt-gallery-column {
+    display: none;
+  }
+
+  .moveable-image {
+    display: block;
+  }
+
+  #nav-logo {
+    width: 35%;
+  }
+
+  table {
+    display: none;
+  }
+
+  #alt-table {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0.4vw solid #256eff;
+    padding: 0.2rem;
+  }
+
+  th,
+  td {
+    width: 20%;
+    padding: 0.5rem 0.2rem;
+    text-align: center;
+  }
+
+  td {
+    border: 1px dotted #ff9f1c;
+  }
+  thead,
+  tbody {
+    width: 90vw;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  th,
+  td {
+    /* not really sure why I need 25% now, but it works... sort of */
+    min-width: 25%;
+    padding: 0.9rem 0.2rem;
+    text-align: center;
+  }
+
+  .moveable-image {
+    display: none;
+  }
+
+  #alt-gallery-column {
+    display: block;
+    flex-direction: column;
+  }
+
+  .gallery-row {
+    flex-direction: column;
+  }
+
+  .gallery-row,
+  #alt-gallery-column {
+    width: 20%;
+  }
+
+  #enlarged-image-container {
+    width: 60%;
+    margin: 0.4rem;
+  }
+
+  .gallery-column {
+    width: 100%;
+  }
+
+  #gallery-container {
+    display: flex;
+  }
+}
