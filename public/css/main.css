@@ -77,7 +77,8 @@ body {
   background-color: var(--highlight);
 }
 
-#nav-burger-links ul li a {
+#nav-burger-links ul li a,
+.burger-form {
   display: block;
   line-height: 14vh;
   text-decoration: none;
@@ -92,9 +93,28 @@ body {
 }
 
 .nav-link,
-.single-nav-link {
+.single-nav-link,
+.nav-form {
   display: none;
 }
+
+.burger-button {
+  border: 0;
+  color: var(--color1);
+  background-color: transparent;
+  font-family: 'DejaVu Serif';
+  font-size: 7.4vw; /* previously 5vh */
+  line-height: 14vh;
+  height: max-content;
+  width: 100%;
+  padding: 0;
+}
+
+.burger-form li:hover,
+.burger-button:hover {
+  cursor: pointer;
+}
+
 
 .single-nav-link:hover,
 .nav-link:hover {
@@ -146,12 +166,14 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+
   #nav-bar {
     font-size: 3.2vw;
     align-items: center;
   }
 
-  .nav-link {
+  .nav-link,
+  .nav-form {
     font-size: 2.6vw;
     font-family: "Times New Roman", Times, serif;
     margin-left: auto;
@@ -161,6 +183,23 @@ body {
     width: 13%;
     text-decoration: none;
     color: gray;
+  }
+
+  .nav-button {
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    color: gray;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.6vw;
+    font-weight: bold;
+    line-height: var(--header-height);
+    width: 100%;
+  }
+
+  .nav-button:hover {
+    background-color: var(--highlight);
+    cursor: pointer;
   }
 
   .single-nav-link {

@@ -3,7 +3,7 @@
         <link rel='stylesheet' href='./css/games.css' />
     </x-slot>
     <x-slot name="content">
-        @foreach ($games as $game)
+        <!-- @foreach ($games as $game)
             <h3>
                 <a href="/games/{{ $game->slug }}">
                     {{ $game->game_title->english_title }}
@@ -21,6 +21,6 @@
                 </a>
             </h3>
             <hr>
-        @endforeach
+        @endforeach -->
     </x-slot>
 </x-layout>

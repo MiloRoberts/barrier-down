@@ -19,17 +19,27 @@
           <i class='icon-menu' id='icon-menu'></i>
           <i class='icon-cancel hidden' id='icon-cancel'></i>
         </div>
-        <a class='nav-link' href='/profile'>Settings</a>
         <a class='nav-link' href='/games'>Games</a>
         <a class='nav-link' href='/flashcards'>Flashcards</a>
         <a class='nav-link' href='/about'>About</a>
-        <a class='nav-link' href='/logout'>Sign Out</a>
+        <!-- below means only if the user is a user like if (auth()->check()) -->
+        <!-- guest can be used the same way -->        
+        @auth
+            <!-- <span>Welcome, {{ Auth::user()->name }}</span> -->
+            <!-- alternative below -->
+            <!-- <span>Welcome, {{ auth()->user()->name }}</span> -->
+            <a class='nav-link' href="/settings">Settings</a>
+            <form class="nav-form" action="/logout" method="post">
+                @csrf
+                <button class="nav-button" type="submit">Sign Out</button>
+            </form>
+        @else
+            <a class='nav-link' href="/register">Register</a>
+            <a class='nav-link' href="/login">Sign In</a>
+        @endauth
       </nav>
       <nav id='nav-burger-links'>
         <ul>
-          <li>
-            <a class='burger-link' href='/settings'>Settings</a>
-          </li>
           <li>
             <a class='burger-link' href='/games'>Games</a>
           </li>
@@ -39,28 +49,27 @@
           <li>
             <a class='burger-link' href='/about'>About</a>
           </li>
-          <li>
-            <a class='burger-link' href='/logout'>Sign Out</a>
-          </li>
+            @auth
+                <li>
+                    <a class='burger-link' href="/settings">Settings</a>
+                </li>
+                <form class="burger-form" action="/logout" method="post">
+                    @csrf
+                    <li>
+                        <button class="burger-button" type="submit">Sign Out</button>
+                    </li>
+                </form>
+            @else
+                <li>
+                    <a class='nav-link' href="/register">Register</a>
+                </li>    
+                <li>
+                    <a class='nav-link' href="/login">Sign In</a>
+                </li>
+            @endauth
         </ul>
       </nav>
     </header>
-    <!-- below means only if the user is a user like if (auth()->check()) -->
-    <!-- guest can be used the same way -->
-    @auth
-        <span>Welcome, {{ Auth::user()->name }}</span>
-        <!-- alternative below -->
-        <!-- <span>Welcome, {{ auth()->user()->name }}</span> -->
-        <form action="/logout" method="post">
-            @csrf
-
-            <button type="submit">Log Out</button>
-        </form>
-    @else
-        <a href="/register">Register</a>
-        <a href="/login">Log In</a>
-    @endauth
-
     {{ $content }}
     
     @if (session()->has('success'))
