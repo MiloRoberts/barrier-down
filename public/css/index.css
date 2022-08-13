@@ -1,0 +1,15 @@
+body {
+  background: url(../images/front_page_background_with_text.png);
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color2);
+  font-size: large;
+}
+
+@media screen and (min-width: 700px) {
+  body {
+    background-size: auto;
+  }
+}

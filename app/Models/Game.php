@@ -22,10 +22,6 @@ class Game extends Model
     public function lexeme() {
         return $this->belongsToMany(Lexeme::class);
     }
-
-    public function screenshots() {
-        return $this->hasMany(Screenshot::class);
-    }
     
     // Is this pivot correct?
     public function users() {
