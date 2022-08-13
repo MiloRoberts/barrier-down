@@ -1,0 +1,15 @@
+h3 {
+  color: #256eff;
+  margin-top: 1.6rem;
+}
+
+.italic-span {
+  font-style: italic;
+}
+
+/* without a front page this is now unneeded */
+/* @media screen and (min-width: 700px) {
+  #nav-logo {
+    width: 35%;
+  }
+} */

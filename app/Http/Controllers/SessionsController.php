@@ -19,7 +19,9 @@ class SessionsController extends Controller
     public function destroy() {
         auth()->logout();
 
-        return redirect('/')->with('success', 'Goodbye');
+        // TO DO: add message and have disappear after set amount of time
+        // return redirect('/')->with('success', 'Goodbye');
+        return redirect('/')->with('success');
     }
 
     public function store() {
@@ -42,7 +44,9 @@ class SessionsController extends Controller
         // more needed?
         session()->regenerate();
         // redirect with a success flash message
-        return redirect('/')->with('success', 'Welcome back');
+        // TO DO: add message and have disappear after set amount of time
+        // return redirect('/')->with('success', 'Welcome back');
+        return redirect('/')->with('success');
 
         // alternative to above
         // return back()

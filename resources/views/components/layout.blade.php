@@ -12,7 +12,7 @@
 <body>
     <header>
       <nav id='nav-bar'>
-        <a id='nav-logo' href='/index.php'
+        <a id='nav-logo' href='/'
           >Barrier<span id='logo-span-right'>Down</span></a
         >
         <div id='nav-burger' onclick='toggleBurgerLinks()'>

@@ -1,6 +1,6 @@
 <x-layout>
     <x-slot name="styling">
-      <link rel="stylesheet" href="/css/register.css">
+      <link rel="stylesheet" href="/css/loginRegister.css">
     </x-slot>
     <x-slot name="content">
         <form action="/register" method="post">
@@ -70,7 +70,7 @@
               </div>
             </div> -->
 
-            <div class="join-form-flex">
+            <div class="join-form-flex button-container">
               <div class="button-decoration-far-left"></div>
               <div class="button-decoration-left"></div>
               <button class="join-form-right" type="submit" id="submit-new-account">

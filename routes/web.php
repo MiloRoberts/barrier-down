@@ -21,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('games', function () {
     return view('games', [
         'games' => Game::with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')
             ->get()
@@ -42,7 +46,6 @@ Route::get('/', function () {
 // });
 
 Route::get('games/{game:slug}', function (Game $game) {
-
     return view('game', [
         'game' => $game
     ]);
@@ -56,6 +59,14 @@ Route::get('gameconsoles/{gameconsole:slug}', function (GameConsole $gameconsole
     ]);
 });
 
+Route::get('flashcards', function () {
+    return view('flashcards');
+});
+
+Route::get('settings', function () {
+    return view('settings');
+});
+
 Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
 Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
 
@@ -66,6 +77,10 @@ Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth'
 // TO DO: have controller below handle spreadsheet uploads
 Route::get('admin/lexemes/create', [LexemesController::class, 'create'])->middleware('admin');
 Route::post('admin/lexemes', [LexemesController::class, 'store'])->middleware('admin');
+
+Route::get('about', function() {
+    return view('about');
+});
 
 // NOTE: Remember to make About page visible to non-logged in users
 
