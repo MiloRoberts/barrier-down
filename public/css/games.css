@@ -42,11 +42,12 @@ img {
   flex-direction: row-reverse;
 } */
 
-@media screen and (min-width: 700px) {
+/* remove this if not using front page */
+/* @media screen and (min-width: 700px) {
   #nav-logo {
     width: 35%;
   }
-}
+} */
 
 @media screen and (min-width: 1200px) {
   .game-container {

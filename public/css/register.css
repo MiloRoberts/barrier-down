@@ -1,0 +1,105 @@
+body {
+  /* background: url(../images/front_page_background_with_text.png); */
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--color2);
+  font-size: large;
+}
+
+/* button {
+  background-color: var(--color1);
+  font-weight: 600;
+  color: var(--color2);
+  padding: 0.6em 2em;
+  border-radius: 20px;
+  display: block;
+} */
+
+.button-decoration-far-left {
+  display: block;
+  min-width: calc(28vw - 2em);
+}
+
+.button-decoration-left {
+  background-color: var(--color2);
+  /* border: 0.2em solid var(--color1); */
+  outline: 0.1em solid var(--color1);
+  border-radius: 20px 0px 0px 20px;
+  display: block;
+  min-width: 2em;
+  margin-right: 0.8em;
+}
+
+#submit-new-account,
+#login-button {
+  background-color: var(--color1);
+  font-weight: 600;
+  font-size: 01rem;
+  color: var(--color2);
+  padding: 0.6em 1.5em;
+  border-radius: 0px 20px 20px 0px;
+  display: block;
+}
+
+#join-button {
+  background-color: var(--color1);
+  font-size: large;
+  font-weight: 900;
+  color: var(--color2);
+  padding: 0.6em 2em;
+  border-radius: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  margin-top: 60vh;
+  /* border-width: 0.2em solid black; */
+}
+
+#join-button:hover,
+#submit-new-account:hover,
+#login-button:hover {
+  background-color: var(--color2);
+  color: white;
+}
+
+#join-form,
+#login-form {
+  background-color: var(--color2);
+  padding-bottom: 20%;
+}
+
+.join-form-flex {
+  display: flex;
+}
+
+.join-form-left {
+  display: block;
+  min-width: 28vw;
+  text-align: right;
+  margin-right: 0.8em;
+}
+
+.join-form-right {
+  display: block;
+  max-width: 60vw;
+}
+
+input[type="checkbox"] {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+@media screen and (min-width: 700px) {
+  #nav-logo {
+    width: 70%;
+  }
+  .nav-link {
+    width: 30%;
+  }
+
+  body {
+    background-size: auto;
+  }
+}

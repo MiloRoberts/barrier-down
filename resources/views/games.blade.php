@@ -1,6 +1,5 @@
 <x-layout>
     <x-slot name="styling">
-        <link rel='stylesheet' href='./css/games.css' />
     </x-slot>
     <x-slot name="content">
         <!-- @foreach ($games as $game)

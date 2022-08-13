@@ -18,8 +18,12 @@ class RegisterController extends Controller
             'username' =>  ['required','min:3','max:255', 'unique:users,username'],
             // Rule::unique('users', 'username') can be used instead of 'unique:users,username' because it you can then use stuff like ->ignore() which can be useful when updating an account without triggering the unique restriction
             'email' =>  ['required','email','max:255', 'unique:users,email'],
-            'password' =>  ['required','min:8','max:255']
+            'password' =>  ['required','min:8','max:255'],
             // 'password' =>  ['required','password','min:8','max:255'] // this not better?
+            'password' =>  ['required',    
+                'required_with:retyped_password', 'same:retyped_password', 'min:8','max:255'],
+            // maybe I don't need 'required' for above and/or below
+            'retyped_password'
         ]);
 
         // alternative to the eloquent mutator in User class
