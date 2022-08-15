@@ -15,7 +15,7 @@ class CreateLexemeMeaningsTable extends Migration
     {
         Schema::create('lexeme_meanings', function (Blueprint $table) {
             $table->id();
-            $table->string('meaning');
+            $table->string('meaning')->unique();
             $table->timestamps();
         });
     }

@@ -17,6 +17,7 @@ class CreateGamesUsersTable extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->unique( array('game_id','user_id'), 'game_user_unique' );
             $table->boolean('contributor')->default(false);
             $table->boolean('learning')->default(false);
             $table->timestamps();

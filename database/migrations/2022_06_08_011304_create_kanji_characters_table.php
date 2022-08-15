@@ -15,8 +15,9 @@ class CreateKanjiCharactersTable extends Migration
     {
         Schema::create('kanji_characters', function (Blueprint $table) {
             $table->id();
-            $table->string('character'); // also set as unique?
+            $table->string('character')->unique();
             $table->string('reference')->unique();
+            $table->unique( array('character','reference'), 'kanji_character_unique' );
             $table->timestamps();
         });
     }

@@ -3,10 +3,10 @@
 use App\Models\Game;
 use App\Models\GameConsole;
 // use App\Http\Controllers\GamesController; //probably won't use after all
-use App\Http\Controllers\LexemesController;
 use App\Http\Controllers\RegisterController;
 // use App\Http\Controllers\ScreenshotsController; //probably won't use after all
 use App\Http\Controllers\SessionsController;
+use App\Http\Controllers\SpreadsheetsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Route::get('games', function () {
     return view('games', [
-        'games' => Game::with('game_console', 'game_title', 'game_console.console_manufacturer', 'game_console.console_name')
+        'games' => Game::with('game_console', 'game_title')
             ->get()
             ->sortBy('game_title.english_title')
             // note that it must use .english_title
@@ -75,8 +75,8 @@ Route::post('login', [SessionsController::class, 'store'])->middleware('guest');
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
 
 // TO DO: have controller below handle spreadsheet uploads
-Route::get('admin/lexemes/create', [LexemesController::class, 'create'])->middleware('admin');
-Route::post('admin/lexemes', [LexemesController::class, 'store'])->middleware('admin');
+Route::get('spreadsheet', [SpreadsheetsController::class, 'create'])->middleware('admin');
+Route::post('spreadsheet', [SpreadsheetsController::class, 'store'])->middleware('admin');
 
 Route::get('about', function() {
     return view('about');

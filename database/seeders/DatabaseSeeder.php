@@ -5,6 +5,13 @@ namespace Database\Seeders;
 use App\Models\Game;
 use App\Models\GameConsole;
 use App\Models\GameTitle;
+use App\Models\KanjiCharacter;
+use App\Models\KanjiMeaning;
+use App\Models\KanjiReading;
+use App\Models\LexemeItem;
+use App\Models\LexemeMeaning;
+use App\Models\LexemeReading;
+use App\Models\LexicalClass;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -48,14 +55,45 @@ class DatabaseSeeder extends Seeder
             'game_console_id' => $sony_playstation->id,
             'game_title_id' => $culdcept_expansion_plus->id,
             // maybe get a slug from a method instead
-            'slug' => 'culdcept-expansion-plus-sony-playstation'
+            'slug' => 'culdcept-expansion-plus-sony-playstation',
+            'info' => '<h4>Some Heading</h4><p>Culdcept yadda yadda yadda...</p>'
         ]);
 
         Game::create([
             'game_console_id' => $nintendo_super_famicom->id,
             'game_title_id' => $super_puyo_puyo_tsuu_remix->id,
             // maybe get a slug from a method instead
-            'slug' => 'super-puyo-puyo-tsuu-remix-super-nintendo'
+            'slug' => 'super-puyo-puyo-tsuu-remix-super-famicom',
+            'info' => '<h4>Some Heading</h4><p>Puyo Puyo yadda yadda yadda...</p>'
+        ]);
+
+        LexicalClass::create([
+            'class' => 'noun'
+        ]);
+
+        LexemeItem::create([
+            'item' => '日本'
+        ]);
+
+        LexemeMeaning::create([
+            'meaning' => 'Japan'
+        ]);
+
+        LexemeReading::create([
+            'reading' => 'ほん'
+        ]);
+
+        KanjiCharacter::create([
+            'character' => '日',
+            'reference' => 'a12.b3'
+        ]);
+
+        KanjiMeaning::create([
+            'meaning' => 'day'
+        ]);
+
+        KanjiReading::create([
+            'reading' => '二'
         ]);
     }
 }

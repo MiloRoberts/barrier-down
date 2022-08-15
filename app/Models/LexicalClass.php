@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LexicalClasses extends Model
+class LexicalClass extends Model
 {
     use HasFactory;
 

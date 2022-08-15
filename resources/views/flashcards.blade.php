@@ -1,7 +1,125 @@
 <x-layout>
     <x-slot name="styling">
+        <link rel="stylesheet" href="/css/flashcards.css">
     </x-slot>
     <x-slot name="content">
-        Flashcards
+        @guest
+            <h3>You must have an account to use the flashcard program.</h3>
+        @else
+            <div id='initial-screen'>
+                <table>
+                    <tr>
+                        <td>
+                        <input id='select-all-checkbox' type='checkbox' />
+                        </td>
+                        <td>Select / Unselect All</td>
+                    </tr>
+                    </table>
+                <h2>Games</h2>
+                    <table>
+                    <thead>
+                        <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Console</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                <?php    
+                function setInitialElements() {
+                $userSession = $_SESSION['loggedInUser'];
+                    error_reporting(E_ERROR);
+                    try {
+                        include "../LinkpassAccess/linkpass.php";
+                        mysqli_select_db($link, "mroberts18_1");
+                        mysqli_set_charset($link, "utf8");
+                        
+                        $dataToSend = "";
+
+                // THESE NEED TO BE CHANGED SO THAT IT GETS USER_ID FROM SESSION RATHER THAN
+                // ALWAYS USING USER_ID = 3
+
+                        // this gets the non-null values
+                    $sqlQuery = "SELECT DISTINCT games.id, learning, english_title, japanese_title, console 
+                    FROM games
+                    INNER JOIN games_users ON games.id = games_users.game_id
+                    INNER JOIN game_titles ON games.game_title_id = game_titles.id
+                    INNER JOIN game_consoles ON games.game_console_id = game_consoles.id
+                    WHERE `user_id` = " . $userSession . " AND games_users.learning = 1;";
+
+                    $result = mysqli_query($link, $sqlQuery);
+
+                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                    $dataToSend .= "<tr id='G" . $row["game_id"] . "'>
+                    <td rowspan='2'><input type='checkbox' name='game-checkbox'/></td>
+                    <td class='smaller'>" . $row["japanese_title"] . "</td>
+                    <td rowspan='2'>" . $row["console"] . "</td>
+                    </tr>
+                    <tr class='border-bottom'>
+                    <td>" . $row["english_title"] . "</td>
+                    </tr>";
+                    }
+
+                    $dataToSend .= "</tbody>
+                    </table>
+                    <button type='button' id='begin-button'>Begin</button>
+                    </div>
+                    <div id='flashcard-screen' class='hidden'>
+                    <div id='' class='flashcard'>
+                    <div id='lexeme-item'>
+                        <h1 id='flashcard-item'></h1>
+                    </div>
+                    <div id='lexeme-meaning'>
+                        <h4 id='flashcard-meaning' class='invisible'></h4>
+                    </div>
+                    <div id='lexeme-reading'>
+                        <h2 id='flashcard-reading' class='invisible'></h2>
+                    </div>
+                    <div id='lexical-class'>
+                        <h4 id='flashcard-class'></h4>
+                    </div>
+                    </div>
+                    <div class='flexContainer'>
+                    <div id='difficulty1' class='difficulty hidden'>easy</div>
+                    <div id='difficulty2' class='difficulty hidden'></div>
+                    <div id='difficulty3' class='difficulty hidden'></div>
+                    <div id='difficulty4' class='difficulty hidden'></div>
+                    <div id='difficulty5' class='difficulty hidden'>hard</div>
+                    </div>
+                    </div>
+                    <div id='instructions-screen' class='hidden'>
+                    <h3>After flipping over a flashcard, pressing one of the buttons towards to the right will make the flashcard appear again sooner; pressing one of those towards the left will make it do so later.</h3>
+                    <button type='button' id='instructions-understood-button'>Got It!</button>
+                    </div>
+                    <button type='button' id='flip-flashcard-button' class='hidden'>Flip Flashcard</button>
+                    <button type='button' id='view-kanji-button' class='hidden'>View Kanji</button>
+                    <button type='button' id='stop-learning-button' class='hidden'>Stop Learning</button>
+                    <div id='stop-learning-screen' class='hidden'>
+                    <h3>This will remove this item from the list of words you're learning.</h3>
+                    <h3>Do you wish to continue?</h3>
+                    <button type='button' id='yes-button'>Yes</button>
+                    <button type='button' id='no-button'>No</button>
+                    </div>
+                    <div id='kanji-info' class='hidden'></div>
+                    <button type='button' id='go-back-button' class='hidden'>Go Back</button>
+                    <script src='./javascript/main.js'></script>
+                    <script src='./javascript/flashcards.js'></script>
+                    </body>
+                    </html>";
+
+                    } catch (Exception $exceptionError) {
+                        echo $exceptionError->getMessage();
+                    }
+                    echo $dataToSend;
+                }
+
+                setInitialElements();
+                ?>
+        @endguest
     </x-slot>
 </x-layout>
+
+
+
+  

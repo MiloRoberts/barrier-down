@@ -17,6 +17,7 @@ class CreateGamesLexemesTable extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained();
             $table->foreignId('lexeme_id')->constrained();
+            $table->unique( array('game_id','lexeme_id'), 'game_lexeme_unique' );
             $table->timestamps();
         });
     }

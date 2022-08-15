@@ -15,7 +15,7 @@ class CreateKanjiMeaningsTable extends Migration
     {
         Schema::create('kanji_meanings', function (Blueprint $table) {
             $table->id();
-            $table->string('meaning');
+            $table->string('meaning')->unique();
             $table->timestamps();
         });
     }

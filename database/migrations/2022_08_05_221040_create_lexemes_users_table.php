@@ -17,6 +17,7 @@ class CreateLexemesUsersTable extends Migration
             $table->id();
             $table->foreignId('lexeme_id')->constrained();
             $table->foreignId('user_id')->constrained();
+            $table->unique( array('lexeme_id','user_id'), 'lexeme_user_unique' );
             $table->boolean('learning')->default(false);;
             $table->timestamps();
         });

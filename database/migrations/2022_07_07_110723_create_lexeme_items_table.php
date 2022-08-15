@@ -15,7 +15,7 @@ class CreateLexemeItemsTable extends Migration
     {
         Schema::create('lexeme_items', function (Blueprint $table) {
             $table->id();
-            $table->string('item');
+            $table->string('item')->unique();
             $table->timestamps();
         });
     }

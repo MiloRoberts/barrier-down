@@ -15,7 +15,7 @@ class CreateKanjiReadingsTable extends Migration
     {
         Schema::create('kanji_readings', function (Blueprint $table) {
             $table->id();
-            $table->string('reading');
+            $table->string('reading')->unique();
             $table->timestamps();
         });
     }

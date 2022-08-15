@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->foreignId('game_console_id')->constrained();
             // $table->foreign('game_console_id')->references('id')->on('game_consoles');
             $table->foreignId('game_title_id')->constrained();
+            $table->unique( array('game_console_id','game_title_id'), 'game_unique' );
             // should this stay as nullable?
             $table->text('info')->nullable();
             // maybe get a slug from a method instead

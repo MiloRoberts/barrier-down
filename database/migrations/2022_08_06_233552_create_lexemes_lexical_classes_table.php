@@ -17,6 +17,7 @@ class CreateLexemesLexicalClassesTable extends Migration
             $table->id();
             $table->foreignId('lexeme_id')->constrained();
             $table->foreignId('lexical_class_id')->constrained();
+            $table->unique( array('lexeme_id','lexical_class_id'), 'lexeme_lexical_class_unique' );
             $table->timestamps();
         });
     }

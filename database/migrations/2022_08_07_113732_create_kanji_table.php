@@ -18,6 +18,7 @@ class CreateKanjiTable extends Migration
             $table->foreignId('kanji_character_id')->constrained();
             $table->foreignId('kanji_meaning_id')->constrained();
             $table->foreignId('kanji_reading_id')->constrained();
+            $table->unique( array('kanji_character_id','kanji_meaning_id', 'kanji_reading_id'), 'kanji_unique' );
             $table->timestamps();
         });
     }

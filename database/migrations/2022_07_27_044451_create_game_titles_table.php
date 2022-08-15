@@ -17,6 +17,7 @@ class CreateGameTitlesTable extends Migration
             $table->id();
             $table->string('english_title');
             $table->string('japanese_title');
+            $table->unique( array('english_title','japanese_title'), 'game_title_unique' );
             $table->timestamps();
         });
     }

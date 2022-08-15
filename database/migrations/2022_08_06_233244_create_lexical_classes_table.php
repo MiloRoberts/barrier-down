@@ -15,7 +15,7 @@ class CreateLexicalClassesTable extends Migration
     {
         Schema::create('lexical_classes', function (Blueprint $table) {
             $table->id();
-            $table->text('class');
+            $table->string('class')->unique();
             $table->timestamps();
         });
     }

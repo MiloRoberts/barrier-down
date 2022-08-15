@@ -1,18 +1,63 @@
 <x-layout>
-    <h3>
-        <a href="/games/{{ $game->slug }}">
-            {{ $game->game_title->english_title }}
-        </a>
-    </h3>
-    <h3>
-        {{ $game->game_title->japanese_title }}
-    </h3>
-    <h3>
-        <a href="/gameconsoles/{{ $game->game_console->slug }}">
-            {{ $game->game_console->console_manufacturer->manufacturer }} 
-            <span>
-                {{ $game->game_console->console_name->name }}
-            </span>
-        </a>
-    </h3>
+    <x-slot name="styling">
+        <link rel="stylesheet" href="/css/individualGames.css">
+    </x-slot>  
+    <x-slot name="content">
+
+        <picture class="title-screen">
+        <source
+            srcset="/images/{{ $game->slug }}-00.png"
+            media="(min-width: 604px)"
+        />
+        <source
+            srcset="/images/{{ $game->slug }}-00-lg.png"
+            media="(min-width: 906px)"
+        />
+        <img src="/images/{{ $game->slug }}-00-sm.png" />
+        </picture>
+        <h2 class='special-heading-bright'>{{ $game->game_title->english_title }}</h2>
+        {!! $game->info !!}
+        <div id='slideshow-container'>
+            @for ($i = 1; $i <= 6; $i++)
+                <div class='slideshow-image-container'>
+                    <img src='/images/{{ $game->slug }}-0{{ $i }}-sm.png' alt='{{ $game->game_title->english_title }} screenshot #{{ $i }}' />
+                </div>
+            @endfor
+        </div>
+        <div id="gallery-container">
+            <div class="gallery-row">
+                @for ($i = 1; $i <= 3; $i++)
+                <div class="gallery-column">
+                        <img
+                            src="/images/{{ $game->slug }}-0{{ $i }}.png"
+                            alt="{{ $game->game_title->english_title }} screenshot #{{ $i }}"
+                            onclick="showGallery(this)"
+                        />
+                    </div>
+                    @endfor
+            </div>
+            <div id="enlarged-image-container">
+                <img src="/images/{{ $game->slug }}-01.png" alt="" id="enlarged-image" />
+            </div>
+            <div id="alt-gallery-column">
+                @for ($i = 4; $i <= 6; $i++)
+                    <div class="gallery-column">
+                        <img
+                            src="/images/{{ $game->slug }}-0{{ $i }}.png"
+                            alt="{{ $game->game_title->english_title }} screenshot #{{ $i }}"
+                            onclick="showGallery(this)"
+                        />
+                    </div>
+                @endfor
+            </div>
+        </div>
+        <!-- <div id='add-culdcept-expansion' class='add-game-button'>
+        Start Learning
+        </div>
+        <div id='remove-culdcept-expansion' class='remove-game-button'>
+        Stop Learning
+        </div>  -->
+    <script src="/javascript/individualGames.js"></script>
+
+    </x-slot>
 </x-layout>

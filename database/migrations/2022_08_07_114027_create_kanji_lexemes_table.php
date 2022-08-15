@@ -15,8 +15,11 @@ class CreateKanjiLexemesTable extends Migration
     {
         Schema::create('kanji_lexemes', function (Blueprint $table) {
             $table->id();
+            // Note: 'kanji' needs to get passed because the table name does
+            // not match Laravel's naming conventions
             $table->foreignId('kanji_id')->constrained('kanji');
             $table->foreignId('lexeme_id')->constrained();
+            $table->unique( array('kanji_id','lexeme_id'), 'kanji_lexeme_unique' );
             $table->timestamps();
         });
     }

@@ -3,14 +3,14 @@ img {
   margin: 0.2rem;
 }
 
-.main-container {
+/* .main-container {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .game-container {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row; */
   align-items: center;
   justify-content: space-evenly;
   margin-top: 0.4rem;
@@ -19,6 +19,10 @@ img {
   width: 96vw;
   transition: 0.3s ease-in;
   cursor: pointer;
+}
+
+.game-link:nth-of-type(2) .game-container{
+  flex-direction: row-reverse;
 }
 
 .game-container:hover {
@@ -53,6 +57,11 @@ img {
   .game-container {
     width: 48vw;
   }
+
+.game-link:nth-of-type(2) .game-container{
+  flex-direction: row;
+}
+
   #games-single-rows {
     display: none;
   }
