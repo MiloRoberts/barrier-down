@@ -15,7 +15,7 @@ class CreateLexemeReadingsTable extends Migration
     {
         Schema::create('lexeme_readings', function (Blueprint $table) {
             $table->id();
-            $table->string('reading')->unique()->nullable();
+            $table->string('reading')->unique();
             $table->timestamps();
         });
     }

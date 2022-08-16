@@ -1,0 +1,43 @@
+table {
+  background-color: var(--color1);
+  color: var(--color2);
+  border-collapse: collapse;
+  font-size: large;
+  width: 94vw;
+}
+
+.border-bottom {
+  border-bottom: 0.1em solid var(--color2);
+}
+
+.smaller {
+  font-size: small;
+  min-width: 20vw;
+}
+
+input[type="checkbox"] {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+h2 {
+  text-align: center;
+  color: var(--color-dark);
+}
+
+/* NOTE: This runs contrary to what's in main.css */
+th {
+  text-align: left;
+}
+
+@media screen and (min-width: 700px) {
+  #nav-logo {
+    width: 35%;
+  }
+  table {
+    width: 97vw;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}

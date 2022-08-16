@@ -60,10 +60,22 @@ Route::get('gameconsoles/{gameconsole:slug}', function (GameConsole $gameconsole
 });
 
 Route::get('flashcards', function () {
+    // return view('flashcards', [
+        // 'userId' => Auth::user()->id
+    // ]);
     return view('flashcards');
 });
 
 Route::get('settings', function () {
+    // return view('settings', [
+    //     'user_id'  => Auth::user()->id,
+    //     'user_games' => GameUser::with('game_console', 'game_title')
+    //         ->where('user_id', Auth::user()->id)
+    //         ->get(),
+    //     'user_lexemes' =>LexemeUser::with('lexeme_item', 'lexeme_meaning', 'lexeme_reading')
+    //         ->where('user_id', Auth::user()->id)
+    //         ->get()
+    // ]);
     return view('settings');
 });
 

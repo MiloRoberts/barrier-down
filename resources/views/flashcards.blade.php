@@ -27,37 +27,31 @@
                     <tbody>
 
                 <?php    
+
                 function setInitialElements() {
-                $userSession = $_SESSION['loggedInUser'];
+                
                     error_reporting(E_ERROR);
                     try {
-                        include "../LinkpassAccess/linkpass.php";
-                        mysqli_select_db($link, "mroberts18_1");
-                        mysqli_set_charset($link, "utf8");
                         
-                        $dataToSend = "";
+                    $dataToSend = "";
 
-                // THESE NEED TO BE CHANGED SO THAT IT GETS USER_ID FROM SESSION RATHER THAN
-                // ALWAYS USING USER_ID = 3
-
-                        // this gets the non-null values
                     $sqlQuery = "SELECT DISTINCT games.id, learning, english_title, japanese_title, console 
                     FROM games
                     INNER JOIN games_users ON games.id = games_users.game_id
                     INNER JOIN game_titles ON games.game_title_id = game_titles.id
                     INNER JOIN game_consoles ON games.game_console_id = game_consoles.id
-                    WHERE `user_id` = " . $userSession . " AND games_users.learning = 1;";
+                    WHERE `user_id` = '" . Auth::user()->id . "' AND games_users.learning = 1;";
 
-                    $result = mysqli_query($link, $sqlQuery);
+                    $result = DB::select($sqlQuery);
 
-                    while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-                    $dataToSend .= "<tr id='G" . $row["game_id"] . "'>
+                    foreach($result as $row) {
+                    $dataToSend .= "<tr id='G" . $row->game_id . "'>
                     <td rowspan='2'><input type='checkbox' name='game-checkbox'/></td>
-                    <td class='smaller'>" . $row["japanese_title"] . "</td>
-                    <td rowspan='2'>" . $row["console"] . "</td>
+                    <td class='smaller'>" . $row->japanese_title . "</td>
+                    <td rowspan='2'>" . $row->console . "</td>
                     </tr>
                     <tr class='border-bottom'>
-                    <td>" . $row["english_title"] . "</td>
+                    <td>" . $row->english_title . "</td>
                     </tr>";
                     }
 
@@ -103,8 +97,8 @@
                     </div>
                     <div id='kanji-info' class='hidden'></div>
                     <button type='button' id='go-back-button' class='hidden'>Go Back</button>
-                    <script src='./javascript/main.js'></script>
-                    <script src='./javascript/flashcards.js'></script>
+                    <script src='/javascript/main.js'></script>
+                    <script src='/javascript/flashcards.js'></script>
                     </body>
                     </html>";
 
