@@ -2,6 +2,7 @@
 
 use App\Models\Game;
 use App\Models\GameConsole;
+use App\Http\Controllers\FlashcardsController;
 // use App\Http\Controllers\GamesController; //probably won't use after all
 use App\Http\Controllers\RegisterController;
 // use App\Http\Controllers\ScreenshotsController; //probably won't use after all
@@ -65,6 +66,7 @@ Route::get('flashcards', function () {
     // ]);
     return view('flashcards');
 });
+// Route::get('flashcards', [FlashcardsController::class, 'show'])->middleware('auth');
 
 Route::get('settings', function () {
     // return view('settings', [

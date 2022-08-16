@@ -147,6 +147,9 @@ beginButton.addEventListener("click", function () {
       //   lexemesArray = this.responseText;
       // }
     };
+    // dataRequest.open("GET", "/flashcards.php", true);
+    // POST and ./getflashcards aren't right
+    // also change button to submit? 
     dataRequest.open("POST", "./getFlashcards.php", true);
     dataRequest.setRequestHeader(
       "Content-type",

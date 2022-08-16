@@ -57,7 +57,7 @@
 
                     $dataToSend .= "</tbody>
                     </table>
-                    <button type='button' id='begin-button'>Begin</button>
+                    <button type='submit' id='begin-button'>Begin</button>
                     </div>
                     <div id='flashcard-screen' class='hidden'>
                     <div id='' class='flashcard'>
@@ -97,7 +97,6 @@
                     </div>
                     <div id='kanji-info' class='hidden'></div>
                     <button type='button' id='go-back-button' class='hidden'>Go Back</button>
-                    <script src='/javascript/main.js'></script>
                     <script src='/javascript/flashcards.js'></script>
                     </body>
                     </html>";
