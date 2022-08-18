@@ -45,7 +45,7 @@
                     $result = DB::select($sqlQuery);
 
                     foreach($result as $row) {
-                    $dataToSend .= "<tr id='G" . $row->game_id . "'>
+                    $dataToSend .= "<tr id='G" . $row->id . "'>
                     <td rowspan='2'><input type='checkbox' name='game-checkbox'/></td>
                     <td class='smaller'>" . $row->japanese_title . "</td>
                     <td rowspan='2'>" . $row->console . "</td>
@@ -57,7 +57,7 @@
 
                     $dataToSend .= "</tbody>
                     </table>
-                    <button type='submit' id='begin-button'>Begin</button>
+                    <button type='button' id='begin-button' data-csrf='" . csrf_token() . "' >Begin</button>
                     </div>
                     <div id='flashcard-screen' class='hidden'>
                     <div id='' class='flashcard'>
@@ -83,7 +83,7 @@
                     </div>
                     </div>
                     <div id='instructions-screen' class='hidden'>
-                    <h3>After flipping over a flashcard, pressing one of the buttons towards to the right will make the flashcard appear again sooner; pressing one of those towards the left will make it do so later.</h3>
+                    <h3>After flipping over a flashcard, pressing one of the buttons towards the right will make the flashcard appear again sooner; pressing one of those towards the left will make it do so later.</h3>
                     <button type='button' id='instructions-understood-button'>Got It!</button>
                     </div>
                     <button type='button' id='flip-flashcard-button' class='hidden'>Flip Flashcard</button>

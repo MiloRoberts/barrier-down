@@ -36,6 +36,5 @@
             <p>License: SIL ()</p>
             <p>Homepage: http://fortawesome.github.com/Font-Awesome/</p>
         </div>
-        <script src="./javascript/main.js"></script>
     </x-slot>
 </x-layout>

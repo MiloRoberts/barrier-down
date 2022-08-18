@@ -66,7 +66,7 @@ Route::get('flashcards', function () {
     // ]);
     return view('flashcards');
 });
-// Route::get('flashcards', [FlashcardsController::class, 'show'])->middleware('auth');
+Route::post('flashcards', [FlashcardsController::class, 'store'])->middleware('auth'); // TO DO: change to get() with custom name
 
 Route::get('settings', function () {
     // return view('settings', [

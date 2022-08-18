@@ -136,12 +136,14 @@ beginButton.addEventListener("click", function () {
         }
       }
     }
+    // console.log("gamesList: " + gamesList); // testing only
 
     dataRequest = new XMLHttpRequest();
     dataRequest.onload = function () {
+      // console.log(this.responseText);
       lexemesArray = JSON.parse(this.responseText);
 
-      // console.log(lexemesArray);
+      // console.log("lexemesArray: " + lexemesArray);
 
       // if (dataRequest.readyState == 4 && dataRequest.status == 200) {
       //   lexemesArray = this.responseText;
@@ -150,13 +152,16 @@ beginButton.addEventListener("click", function () {
     // dataRequest.open("GET", "/flashcards.php", true);
     // POST and ./getflashcards aren't right
     // also change button to submit? 
-    dataRequest.open("POST", "./getFlashcards.php", true);
+    dataRequest.open("POST", "/flashcards", true);
     dataRequest.setRequestHeader(
       "Content-type",
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gamesList=" + gamesList;
+    dataToSend += "&_token=";
+    dataToSend += document.getElementById('begin-button').dataset['csrf'];
     dataRequest.send(dataToSend);
+    // console.log(dataToSend);
 
     document.getElementById("instructions-screen").classList.remove("hidden");
   } else {
@@ -184,6 +189,7 @@ instructionsUnderstoodButton.addEventListener("click", function () {
   document.getElementById("flashcard-screen").classList.remove("hidden");
   flipFlashcardButton.classList.remove("hidden");
   startFlashcard();
+  // console.log("lexemesArray: " + lexemesArray); //testing only
 });
 
 flipFlashcardButton.addEventListener("click", function () {

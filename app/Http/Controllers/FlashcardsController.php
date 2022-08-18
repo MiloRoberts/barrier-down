@@ -8,12 +8,13 @@ use Illuminate\Http\Request;
 
 class FlashcardsController extends Controller
 {
-        public function show() {
+        public function store() {
         error_reporting(E_ERROR);
 
         try {
 
             $gamesList = $_POST['gamesList'];
+            // var_dump("gameList: " + $gameList);
             
             $sqlQuery = "SELECT DISTINCT lexemes.id, item, meaning, reading FROM lexemes INNER JOIN lexeme_items ON lexemes.lexeme_item_id = lexeme_items.id INNER JOIN lexemes_users ON lexemes.id = lexemes_users.lexeme_id INNER JOIN lexeme_meanings ON lexemes.lexeme_meaning_id = lexeme_meanings.id INNER JOIN lexeme_readings ON lexemes.lexeme_reading_id = lexeme_readings.id INNER JOIN games_lexemes ON lexemes.id = games_lexemes.lexeme_id INNER JOIN games ON games_lexemes.game_id = games.id INNER JOIN games_users ON games.id = games_users.game_id WHERE lexemes_users.user_id = '" . Auth::user()->id . "' AND lexemes_users.learning = 1 AND games_users.learning = 1 AND games_users.game_id IN(" . $gamesList . ") ORDER BY lexemes.id;";
 
@@ -31,23 +32,27 @@ class FlashcardsController extends Controller
 
             $result = DB::select($sqlQuery);
 
+            // var_dump($result);
+
             $idsArray = array();
 
             foreach($result as $row) {
                 for ($i = 0; $i < count($flashcardsArray); $i++) {
 
-                    if (strval($row["lexeme_id"]) == strval($flashcardsArray[$i]["lexemeID"])) {
+                    if (strval($row->lexeme_id) == strval($flashcardsArray[$i]["lexemeID"])) {
 
-                        if (array_search($row["lexeme_id"], $idsArray, false)) {
-                            $flashcardsArray[$i]["classes"] .= "; " . $row["class"];
+                        if (array_search($row->lexeme_id, $idsArray, false)) {
+                            $flashcardsArray[$i]["classes"] .= "; " . $row->class;
                         } else {
 
-                            $flashcardsArray[$i]["classes"] = $row["class"];
-                            array_push($idsArray, $row["lexeme_id"]);
+                            $flashcardsArray[$i]["classes"] = $row->class;
+                            array_push($idsArray, $row->lexeme_id);
                         }
                     }
                 }
             }
+
+            // var_dump($flashcardsArray);
 
             $dataToSend = json_encode($flashcardsArray);
 
