@@ -22,7 +22,7 @@ class GamesUsersController extends Controller
                 WHERE `user_id` = " . Auth::user()->id . " AND game_id = " . $gameID . ";";
                 $result = DB::select($sqlQuery);
 
-                $sqlQuery = "UPDATE games_users SET learning = 1 WHERE `user_id` = " . $userID . " AND game_id = " . $gameID . ";";
+                $sqlQuery = "UPDATE games_users SET learning = 1 WHERE `user_id` = " . Auth::user()->id . " AND game_id = " . $gameID . ";";
                 $result = DB::select($sqlQuery);
                 // while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
                 //     $sqlQuery = "INSERT INTO user_lexeme(`user_id`, lexeme_id) VALUES((SELECT `user_id` FROM user WHERE `name` = '" . $name . "'), " . $row["lexeme_id"] . ");";
@@ -42,10 +42,6 @@ class GamesUsersController extends Controller
 
         error_reporting(E_ERROR);
         try {
-            include "../LinkpassAccess/linkpass.php";
-            mysqli_select_db($link, "mroberts18_1");
-            mysqli_set_charset($link, "utf8");
-
             $sqlQuery = "UPDATE lexemes_users
             INNER JOIN lexemes ON lexemes_users.lexeme_id = lexemes.id
             INNER JOIN games_lexemes ON lexemes.id = games_lexemes.lexeme_id

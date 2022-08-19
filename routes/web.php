@@ -3,12 +3,10 @@
 use App\Models\Game;
 use App\Models\GameConsole;
 use App\Http\Controllers\FlashcardsController;
-// use App\Http\Controllers\GamesController; //probably won't use after all
-use App\Http\Controllers\GamesLexemesController;
 use App\Http\Controllers\GamesUsersController;
 use App\Http\Controllers\KanjiController;
+use App\Http\Controllers\LexemesUsersController;
 use App\Http\Controllers\RegisterController;
-// use App\Http\Controllers\ScreenshotsController; //probably won't use after all
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\SpreadsheetsController;
 use Illuminate\Support\Facades\Route;
@@ -33,7 +31,6 @@ Route::get('games', function () {
         'games' => Game::with('game_console', 'game_title')
             ->get()
             ->sortBy('game_title.english_title')
-            // note that it must use .english_title
         // below makes unnecessary extra queries (see clockwork app)
         // 'games' => Game::all()
     ]);
@@ -107,6 +104,7 @@ Route::get('about', function() {
 
 Route::post('settings/lexemesusers/store', [LexemesUsersController::class, 'store'])->middleware('auth');
 Route::post('settings/lexemesusers/destroy', [LexemesUsersController::class, 'destroy'])->middleware('auth');
+Route::post('settings/lexemesusers/toggle', [LexemesUsersController::class, 'toggle'])->middleware('auth');
 Route::post('settings/gamesusers/store', [GamesUsersController::class, 'store'])->middleware('auth');
 Route::post('settings/gamesusers/destroy', [GamesUsersController::class, 'destroy'])->middleware('auth');
 

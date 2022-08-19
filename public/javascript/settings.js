@@ -39,7 +39,8 @@ function toggleGame(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
-    // dataToSend += "&_token=";
+    // dataToSend += "&_token="
+    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -53,13 +54,14 @@ function toggleGame(checkbox) {
             lexemeCheckboxes[i].checked = true;
           }
         };
-        dataRequest.open("POST", "./toggleChecked.php", true);
+        dataRequest.open("POST", "/settings/lexemesusers/toggle", true);
         dataRequest.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
-        // dataToSend += "&_token=";
+        // dataToSend += "&_token="
+        //  + document.getElementById(' ? ? ? ').dataset['csrf'];
         dataRequest.send(dataToSend);
       }
     }
@@ -71,7 +73,8 @@ function toggleGame(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
-    // dataToSend += "&_token=";
+    // dataToSend += "&_token="
+    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -85,13 +88,14 @@ function toggleGame(checkbox) {
             lexemeCheckboxes[i].checked = false;
           }
         };
-        dataRequest.open("POST", "./toggleChecked.php", true);
+        dataRequest.open("POST", "/settings/lexemesusers/toggle", true);
         dataRequest.setRequestHeader(
           "Content-type",
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
-        // dataToSend += "&_token=";
+        // dataToSend += "&_token="
+        //  + document.getElementById(' ? ? ? ').dataset['csrf'];
         dataRequest.send(dataToSend);
       }
     }
@@ -109,7 +113,8 @@ function toggleLexeme(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
-    // dataToSend += "&_token=";
+    // dataToSend += "&_token="
+    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
     dataRequest.send(dataToSend);
   } else {
     dataRequest = new XMLHttpRequest();
@@ -119,7 +124,8 @@ function toggleLexeme(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
-    // dataToSend += "&_token=";
+    // dataToSend += "&_token="
+    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
     dataRequest.send(dataToSend);
   }
 }
