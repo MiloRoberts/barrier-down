@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             // password needs to be encrypted
             $table->string('password');
-            $table->boolean('is_admin')->default(false);
+            // $table->boolean('is_admin')->default(false);
             $table->boolean('subscriber')->default(false);
             $table->rememberToken();
             $table->timestamps();

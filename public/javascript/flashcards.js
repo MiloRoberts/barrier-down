@@ -57,8 +57,12 @@ function setReviewPoints(length) {
   }
   if (length >= 10) {
     reviewPointsArray = [length, 8, 6, 4, 2];
-  } else {
+  } 
+  if (length >= 2) {
     reviewPointsArray = [length, length, length, length, length];
+  } else {
+    alert("You cannot study fewer than two lexemes. Please add more to your study list.");
+    window.location.replace("/flashcards");
   }
   return reviewPointsArray;
 }
@@ -157,6 +161,7 @@ beginButton.addEventListener("click", function () {
       "Content-type",
       "application/x-www-form-urlencoded"
     );
+    dataRequest.setRequestHeader('Accept', 'application/json');
     dataToSend = "&gamesList=" + gamesList;
     dataToSend += "&_token=";
     dataToSend += document.getElementById('begin-button').dataset['csrf'];
@@ -234,12 +239,13 @@ yesButton.addEventListener("click", function () {
   document.getElementById("flashcard-screen").classList.remove("hidden");
 
   dataRequest = new XMLHttpRequest();
-  dataRequest.open("POST", "./removeUserLexeme.php", true);
+  dataRequest.open("POST", "/flashcards/lexeme", true);
   dataRequest.setRequestHeader(
     "Content-type",
     "application/x-www-form-urlencoded"
   );
   dataToSend = "&lexemeID=" + unlearningLexemeID;
+  dataToSend += "&_token=" + document.getElementById('yes-button').dataset['csrf'];
   dataRequest.send(dataToSend);
 
   lexemesArray.shift();
@@ -259,13 +265,14 @@ viewKanjiButton.addEventListener("click", function () {
   dataRequest.onload = function () {
     kanjiInfo.innerHTML = this.responseText;
   };
-  dataRequest.open("POST", "./getKanji.php", true);
+  dataRequest.open("POST", "/flashcards/kanji", true);
   dataRequest.setRequestHeader(
     "Content-type",
     "application/x-www-form-urlencoded"
   );
   let lexemeID = lexemesArray[0].lexemeID;
   dataToSend = "&lexemeID=" + lexemeID;
+  dataToSend += "&_token=" + document.getElementById('view-kanji-button').dataset['csrf'];
   dataRequest.send(dataToSend);
 });
 

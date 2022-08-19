@@ -6,39 +6,40 @@ const lexemeCheckboxes = document.querySelectorAll(
 
 const mailingListCheckbox = document.getElementById("mailing-list-checkbox");
 
-function toggleSubscription() {
-  if (mailingListCheckbox.checked) {
-    dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./addSubscriber.php", true);
-    dataRequest.setRequestHeader(
-      "Content-type",
-      "application/x-www-form-urlencoded"
-    );
-    dataToSend = "";
-    dataRequest.send(dataToSend);
-  } else {
-    dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./removeSubscriber.php", true);
-    dataRequest.setRequestHeader(
-      "Content-type",
-      "application/x-www-form-urlencoded"
-    );
-    dataToSend = "";
-    dataRequest.send(dataToSend);
-  }
-}
+// function toggleSubscription() {
+//   if (mailingListCheckbox.checked) {
+//     dataRequest = new XMLHttpRequest();
+//     dataRequest.open("POST", "./addSubscriber.php", true);
+//     dataRequest.setRequestHeader(
+//       "Content-type",
+//       "application/x-www-form-urlencoded"
+//     );
+//     dataToSend = "";
+//     dataRequest.send(dataToSend);
+//   } else {
+//     dataRequest = new XMLHttpRequest();
+//     dataRequest.open("POST", "./removeSubscriber.php", true);
+//     dataRequest.setRequestHeader(
+//       "Content-type",
+//       "application/x-www-form-urlencoded"
+//     );
+//     dataToSend = "";
+//     dataRequest.send(dataToSend);
+//   }
+// }
 
 function toggleGame(checkbox) {
   let gameID = checkbox.parentElement.parentElement.id;
   gameID = gameID.substring(1);
   if (checkbox.checked) {
     dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./addUserGame.php", true);
+    dataRequest.open("POST", "/settings/gamesusers/store", true);
     dataRequest.setRequestHeader(
       "Content-type",
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
+    // dataToSend += "&_token=";
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -58,17 +59,19 @@ function toggleGame(checkbox) {
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
+        // dataToSend += "&_token=";
         dataRequest.send(dataToSend);
       }
     }
   } else {
     dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./removeUserGame.php", true);
+    dataRequest.open("POST", "/settings/gamesusers/destroy", true);
     dataRequest.setRequestHeader(
       "Content-type",
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
+    // dataToSend += "&_token=";
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -88,6 +91,7 @@ function toggleGame(checkbox) {
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
+        // dataToSend += "&_token=";
         dataRequest.send(dataToSend);
       }
     }
@@ -99,21 +103,23 @@ function toggleLexeme(checkbox) {
   lexemeID = lexemeID.substring(1);
   if (checkbox.checked) {
     dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./addUserLexeme.php", true);
+    dataRequest.open("POST", "/settings/lexemesusers/store", true);
     dataRequest.setRequestHeader(
       "Content-type",
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
+    // dataToSend += "&_token=";
     dataRequest.send(dataToSend);
   } else {
     dataRequest = new XMLHttpRequest();
-    dataRequest.open("POST", "./removeUserLexeme.php", true);
+    dataRequest.open("POST", "/settings/lexemesusers/destroy", true);
     dataRequest.setRequestHeader(
       "Content-type",
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
+    // dataToSend += "&_token=";
     dataRequest.send(dataToSend);
   }
 }

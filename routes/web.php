@@ -4,6 +4,9 @@ use App\Models\Game;
 use App\Models\GameConsole;
 use App\Http\Controllers\FlashcardsController;
 // use App\Http\Controllers\GamesController; //probably won't use after all
+use App\Http\Controllers\GamesLexemesController;
+use App\Http\Controllers\GamesUsersController;
+use App\Http\Controllers\KanjiController;
 use App\Http\Controllers\RegisterController;
 // use App\Http\Controllers\ScreenshotsController; //probably won't use after all
 use App\Http\Controllers\SessionsController;
@@ -66,7 +69,13 @@ Route::get('flashcards', function () {
     // ]);
     return view('flashcards');
 });
-Route::post('flashcards', [FlashcardsController::class, 'store'])->middleware('auth'); // TO DO: change to get() with custom name
+Route::post('flashcards', [FlashcardsController::class, 'showLexemes'])->middleware('auth'); // TO DO: change to get() with custom name
+
+Route::post('flashcards/kanji', [FlashcardsController::class, 'showKanji'])->middleware('auth');
+Route::post('flashcards/lexeme', [FlashcardsController::class, 'unlearnLexeme'])->middleware('auth');
+
+// way it's supposed to be done below
+// Route::post('lexeme/{lexeme_id}/kanji', [FlashcardsController::class, 'showKanji'])->middleware('auth');
 
 Route::get('settings', function () {
     // return view('settings', [
@@ -96,6 +105,9 @@ Route::get('about', function() {
     return view('about');
 });
 
-// NOTE: Remember to make About page visible to non-logged in users
+Route::post('settings/lexemesusers/store', [LexemesUsersController::class, 'store'])->middleware('auth');
+Route::post('settings/lexemesusers/destroy', [LexemesUsersController::class, 'destroy'])->middleware('auth');
+Route::post('settings/gamesusers/store', [GamesUsersController::class, 'store'])->middleware('auth');
+Route::post('settings/gamesusers/destroy', [GamesUsersController::class, 'destroy'])->middleware('auth');
 
 // NOTE: Don't forget to add caching

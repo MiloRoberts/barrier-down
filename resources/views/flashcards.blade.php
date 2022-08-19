@@ -87,12 +87,12 @@
                     <button type='button' id='instructions-understood-button'>Got It!</button>
                     </div>
                     <button type='button' id='flip-flashcard-button' class='hidden'>Flip Flashcard</button>
-                    <button type='button' id='view-kanji-button' class='hidden'>View Kanji</button>
+                    <button type='button' id='view-kanji-button' class='hidden' data-csrf='" . csrf_token() . "'>View Kanji</button>
                     <button type='button' id='stop-learning-button' class='hidden'>Stop Learning</button>
                     <div id='stop-learning-screen' class='hidden'>
                     <h3>This will remove this item from the list of words you're learning.</h3>
                     <h3>Do you wish to continue?</h3>
-                    <button type='button' id='yes-button'>Yes</button>
+                    <button type='button' id='yes-button' data-csrf='" . csrf_token() . "'>Yes</button>
                     <button type='button' id='no-button'>No</button>
                     </div>
                     <div id='kanji-info' class='hidden'></div>
