@@ -4,7 +4,8 @@ const lexemeCheckboxes = document.querySelectorAll(
   "input[name='lexeme-checkbox']"
 );
 
-const mailingListCheckbox = document.getElementById("mailing-list-checkbox");
+// temporarily removed
+// const mailingListCheckbox = document.getElementById("mailing-list-checkbox");
 
 // function toggleSubscription() {
 //   if (mailingListCheckbox.checked) {
@@ -39,8 +40,8 @@ function toggleGame(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
-    // dataToSend += "&_token="
-    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+    dataToSend += "&_token="
+     + document.getElementById('settings-form').dataset['csrf'];
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -60,8 +61,8 @@ function toggleGame(checkbox) {
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
-        // dataToSend += "&_token="
-        //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+        dataToSend += "&_token="
+         + document.getElementById('settings-form').dataset['csrf'];
         dataRequest.send(dataToSend);
       }
     }
@@ -73,8 +74,8 @@ function toggleGame(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&gameID=" + gameID;
-    // dataToSend += "&_token="
-    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+    dataToSend += "&_token="
+     + document.getElementById('settings-form').dataset['csrf'];
     dataRequest.send(dataToSend);
     let learningFlag;
     for (let i = 0; i < lexemeCheckboxes.length; i++) {
@@ -94,12 +95,13 @@ function toggleGame(checkbox) {
           "application/x-www-form-urlencoded"
         );
         dataToSend = "&gameID=" + gameID + "&lexemeID=" + lexemeID;
-        // dataToSend += "&_token="
-        //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+        dataToSend += "&_token="
+         + document.getElementById('settings-form').dataset['csrf'];
         dataRequest.send(dataToSend);
       }
     }
   }
+  location.reload(); //this is slow and clumsy
 }
 
 function toggleLexeme(checkbox) {
@@ -113,8 +115,8 @@ function toggleLexeme(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
-    // dataToSend += "&_token="
-    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+    dataToSend += "&_token="
+     + document.getElementById('settings-form').dataset['csrf'];
     dataRequest.send(dataToSend);
   } else {
     dataRequest = new XMLHttpRequest();
@@ -124,8 +126,8 @@ function toggleLexeme(checkbox) {
       "application/x-www-form-urlencoded"
     );
     dataToSend = "&lexemeID=" + lexemeID;
-    // dataToSend += "&_token="
-    //  + document.getElementById(' ? ? ? ').dataset['csrf'];
+    dataToSend += "&_token="
+     + document.getElementById('settings-form').dataset['csrf'];
     dataRequest.send(dataToSend);
   }
 }
@@ -142,6 +144,7 @@ for (let i = 0; i < lexemeCheckboxes.length; i++) {
   });
 }
 
-mailingListCheckbox.addEventListener("change", function () {
-  toggleSubscription();
-});
+// to be added back in later
+// mailingListCheckbox.addEventListener("change", function () {
+//   toggleSubscription();
+// });

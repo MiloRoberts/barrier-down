@@ -21,39 +21,41 @@ class SpreadsheetsController extends Controller
             // // validation code (obviously)
         // ]);
 
-        if ($_FILES ['fileIn']['error'] > 0) {
-            echo 'ERROR: ';
-            switch ($_FILES ['fileIn']['error']) {
-                case 1:
-                    echo 'File Exceeds upload_max_filesize';
-                    break;
-                case 2:
-                    echo 'File Exceeds max_file_size';
-                    break;
-                case 3:
-                    echo 'Incomplete File Upload';
-                    break;
-                case 4:
-                    echo 'No File Uploaded';
-                    break;
-                case 6:
-                    echo 'Temp Directory Not Specified';
-                    break;
-                case 8:
-                    echo 'PHP Extension Blocked File Upload';
-                    break;
-            }
-            exit;
-        }
+        // RESTORE THIS LATER
+        // if ($_FILES ['fileIn']['error'] > 0) {
+        //     echo 'ERROR: ';
+        //     switch ($_FILES ['fileIn']['error']) {
+        //         case 1:
+        //             echo 'File Exceeds upload_max_filesize';
+        //             break;
+        //         case 2:
+        //             echo 'File Exceeds max_file_size';
+        //             break;
+        //         case 3:
+        //             echo 'Incomplete File Upload';
+        //             break;
+        //         case 4:
+        //             echo 'No File Uploaded';
+        //             break;
+        //         case 6:
+        //             echo 'Temp Directory Not Specified';
+        //             break;
+        //         case 8:
+        //             echo 'PHP Extension Blocked File Upload';
+        //             break;
+        //     }
+        //     exit;
+        // }
 
-        if ($_FILES ['fileIn']['type'] != 'application/vnd.oasis.opendocument.spreadsheet') {
-            echo 'ERROR: Invalid Filetype';
-            exit;
-        }
+        // RESTORE THIS LATER
+        // if ($_FILES ['fileIn']['type'] != 'application/vnd.oasis.opendocument.spreadsheet') {
+        //     echo 'ERROR: Invalid Filetype';
+        //     exit;
+        // }
 
         // get filepath
         // $filePath = '../../storage/' . basename($_FILES['fileIn']['name']);
-        $filePath = storage_path('testingData.ods');
+        $filePath = storage_path('database_upload.ods');
         // ddd($filePath);
         // upload the file to the server
         // TO DO: add this back in! Is the path correct? (See old version.)

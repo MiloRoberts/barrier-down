@@ -23,7 +23,7 @@
             //     $result = DB::select($sqlQuery);
 
             //         foreach($result as $row) {
-            //             if ($row["subscriber"] == 1) {
+            //             if ($row->subscriber == 1) {
             //             $dataToSend .= "<input type='checkbox' id='mailing-list-checkbox' name='mailing-list-checkbox' checked />";
             //             } else {
             //             $dataToSend .= "<input type='checkbox' id='mailing-list-checkbox' name='mailing-list-checkbox' />";
@@ -44,8 +44,6 @@
                 error_reporting(E_ERROR);
                 try {
                     
-                    $dataToSend = "";
-
                     $dataToSend = "<h2>Games</h2>
                 <table>
                 <thead>
@@ -105,6 +103,7 @@
                     $dataToSend = "";
 
                     $dataToSend .= "<h2>Vocabulary</h2>
+                <form action='' method='post' id='settings-form' data-csrf='" . csrf_token() . "'>
                 <table>
                 <thead>
                     <tr>
@@ -118,17 +117,15 @@
                     // this gets the non-null values
                     $sqlQuery = "SELECT lexemes.id, learning, item, meaning, reading FROM lexemes_users, lexemes, lexeme_items, lexeme_meanings, lexeme_readings WHERE `user_id` = " . Auth::user()->id . " AND lexemes.id = lexemes_users.lexeme_id AND lexemes.lexeme_item_id = lexeme_items.id AND lexemes.lexeme_meaning_id = lexeme_meanings.id AND lexemes.lexeme_reading_id = lexeme_readings.id;";
                     
-                    // switch to this updated version
+                    // switch to this updated version after fixing it
 
-                    // needs testing first
-
-                    // $sqlQuery = "SELECT lexeme.lexeme_id, item, meaning, reading FROM lexeme INNER JOIN lexeme_item ON lexeme.lexeme_item_id = lexeme_item.lexeme_item_id INNER JOIN user_lexeme ON lexeme.lexeme_id = user_lexeme.lexeme_id INNER JOIN lexeme_meaning ON lexeme.lexeme_meaning_id = lexeme_meaning.lexeme_meaning_id INNER JOIN lexeme_reading ON lexeme.lexeme_reading_id = lexeme_reading.lexeme_reading_id WHERE user_lexeme.user_id = 3 AND user_lexeme.learning = 1;";
+                    // $sqlQuery = "SELECT lexemes.id, item, meaning, reading FROM lexemes INNER JOIN lexeme_items ON lexemes.lexeme_item_id = lexeme_items.id INNER JOIN lexemes_users ON lexemes.id = lexemes_users.lexeme_id INNER JOIN lexeme_meanings ON lexemes.lexeme_meaning_id = lexeme_meanings.id INNER JOIN lexeme_readings ON lexemes.lexeme_reading_id = lexeme_readings.id WHERE lexemes_users.user_id = " . Auth::user()->id . " AND lexemes_users.learning = 1;";
 
                     $result = DB::select($sqlQuery);
 
                     foreach($result as $row) {
                         if ($row->learning) {
-                            $dataToSend .= "<tr id='L" . $row->lexeme_id . "'>
+                            $dataToSend .= "<tr id='L" . $row->id . "'>
                             <td rowspan='2'><input type='checkbox' name='lexeme-checkbox' checked/></td>
                             <td class='smaller'>" . $row->reading . "</td>
                             <td rowspan='2'>" . $row->meaning . "</td>
@@ -137,7 +134,7 @@
                             <td>" . $row->item . "</td>
                             </tr>";
                         } else {
-                            $dataToSend .= "<tr id='L" . $row->lexeme_id . "'>
+                            $dataToSend .= "<tr id='L" . $row->id . "'>
                             <td rowspan='2'><input type='checkbox' name='lexeme-checkbox'/></td>
                             <td class='smaller'>" . $row->reading . "</td>
                             <td rowspan='2'>" . $row->meaning . "</td>
@@ -150,6 +147,7 @@
 
                     $dataToSend .= "</tbody>
                 </table>
+                </form>
                 <script src='./javascript/settings.js'></script>
             </body>
             </html>";
@@ -160,7 +158,8 @@
                 echo $dataToSend;
             }
 
-            displaySubscriptionStatus();
+            // temporarily removed
+            // displaySubscriptionStatus();
 
             displayGames();
 

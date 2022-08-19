@@ -22,7 +22,7 @@ class MustBeAdministrator
             abort(Response::HTTP_FORBIDDEN);
         }
         
-        if (auth()->user()->username !== 'BarrierDown') {
+        if (auth()->user()->email !== 'mdrobert80@gmail.com') {
             abort(Response::HTTP_FORBIDDEN);
         }
 

@@ -67,6 +67,10 @@ button {
   border: 0.2rem double var(--color1);
 }
 
+.nav-button {
+  margin: auto; /* overrides button margins above */
+}
+
 @media screen and (min-width: 700px) {
   #nav-logo {
     width: 35%;
