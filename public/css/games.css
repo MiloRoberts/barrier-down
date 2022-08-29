@@ -19,6 +19,10 @@ img {
   width: 96vw;
   transition: 0.3s ease-in;
   cursor: pointer;
+  -webkit-filter: grayscale(100%); 
+  filter: grayscale(100%);
+  /* font-weight: bold; */
+  /* font-size: large; */
 }
 
 .game-link:nth-of-type(2) .game-container{
@@ -26,9 +30,9 @@ img {
 }
 
 .game-container:hover {
-  font-size: large;
   color: #ff9f1c;
-  font-weight: bold;
+  -webkit-filter: none; 
+  filter: none;
 }
 
 .game-link {

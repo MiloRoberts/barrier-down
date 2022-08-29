@@ -53,6 +53,7 @@ body {
   position: absolute;
   width: calc(100% - 16px);
   background-color: var(--color2);
+  z-index: 10;
 }
 
 .hidden {
