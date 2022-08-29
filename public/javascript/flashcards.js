@@ -42,28 +42,23 @@ function setReviewPoints(length) {
   let reviewPointsArray = [];
   if (length >= 400) {
     reviewPointsArray = [length, 250, 100, 25, 10];
-  }
-  if (length >= 200) {
+  } else if (length >= 200) {
     reviewPointsArray = [length, 125, 45, 15, 5];
-  }
-  if (length >= 100) {
+  } else if (length >= 100) {
     reviewPointsArray = [length, 75, 30, 10, 5];
-  }
-  if (length >= 40) {
+  } else if (length >= 40) {
     reviewPointsArray = [length, 32, 16, 8, 4];
-  }
-  if (length >= 20) {
+  } else if (length >= 20) {
     reviewPointsArray = [length, 16, 8, 4, 2];
-  }
-  if (length >= 10) {
+  } else if (length >= 10) {
     reviewPointsArray = [length, 8, 6, 4, 2];
-  } 
-  if (length >= 2) {
+  } else if (length >= 2) {
     reviewPointsArray = [length, length, length, length, length];
   } else {
     alert("You cannot study fewer than two lexemes. Please add more to your study list.");
     window.location.replace("/flashcards");
   }
+  console.log(reviewPointsArray);
   return reviewPointsArray;
 }
 
