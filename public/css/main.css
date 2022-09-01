@@ -224,18 +224,6 @@ body {
     font-size: 3vw;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  th,
-  td {
-    font-size: large;
-  }
-
   #nav-burger-links {
     display: none;
     visibility: hidden;

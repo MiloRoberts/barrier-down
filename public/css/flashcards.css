@@ -4,7 +4,9 @@ body {
 .difficulty {
   border: 0.2em solid rgb(128, 128, 128, 0.5);
   width: 14vw;
+  max-width: 33vh;
   height: 12vw;
+  max-height: 33vh;
 }
 .flexContainer {
   display: flex;
@@ -63,7 +65,7 @@ button {
   font-size: 1rem;
   color: var(--color1);
   padding: 0.4rem;
-  margin: 1rem 1rem 0rem 1rem;
+  margin: 3rem 1rem 0rem 1rem;
   border: 0.2rem double var(--color1);
 }
 

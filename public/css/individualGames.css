@@ -56,12 +56,20 @@
 }
 
 h3 {
+  color: var(--color3);
+}
+
+p {
+  line-height: 1.4rem;
+}
+
+/* h3 {
   text-align: center;
 }
 
 h4 {
   color: #256eff;
-}
+} */
 
 table {
   table-layout: fixed;
