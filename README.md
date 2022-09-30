@@ -31,7 +31,7 @@
 - Select "stop learning" to remove a flashcard from your study list altogether.
 
 
-#### Database Schema
+## Database Schema
 
 ![Image of Schema](./storage/database_schema.png)
 
