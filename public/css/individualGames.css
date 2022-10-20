@@ -5,6 +5,20 @@
   margin-right: auto;
 }
 
+.study-button {
+  background-color: var(--color2);
+  font-size: 1rem;
+  color: var(--color1);
+  padding: 0.4rem;
+  margin: 3rem auto 2rem auto;
+  border: 0.2rem double var(--color1);
+  display: block;
+}
+
+.study-button:hover {
+  cursor: pointer;
+}
+
 #slideshow-container {
   height: 224px;
   position: relative;

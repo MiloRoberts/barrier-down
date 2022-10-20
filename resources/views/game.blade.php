@@ -16,6 +16,8 @@
         <img src="/images/{{ $game->slug }}-00-sm.png" />
         </picture>
         <h2 class='special-heading-bright'>{{ $game->game_title->english_title }}</h2>
+        <!-- <button class="study-button">Add to Study List</button> -->
+        <!-- <button class="study-button">Remove from Study List</button> -->
         <h3>What's <em>{{ $game->game_title->english_title }}</em>?</h3>
         {!! $game->info !!}
         <div id='slideshow-container'>

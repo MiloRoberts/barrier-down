@@ -19,12 +19,12 @@
 
 #### Getting Start
 - Register an account.
-- Find a game in the Games page and click "I want to study this."
-- Make alterations to your word list in the My Account page as needed.
+- Choose at least one game to study in the Settings page.
+- Add and Remove individual words as needed.
 
 #### Flashcard program
 - Go to the Flashcard page.
-- Select one or more games that you've chosen to study.
+- Select games from your game list to study for this session.
 - Click "flip flashcard" to reveal the flashcard's backside.
 - Click "hard" to make the flashcard appear sooner or "easy" for later.
 - Click "view kanji" to see details about kanji appearing on the flashcard.
@@ -34,6 +34,13 @@
 ## Database Schema
 
 ![Image of Schema](./storage/database_schema.png)
+
+## Planned Updates
+
+- Alter Settings to focus solely on user account data
+- Allow users to add and remove games from game pages
+- Change list of words and games into a submission form
+- Allow unregistered users to use flashcard program
 
 ## Acknowledgements
 

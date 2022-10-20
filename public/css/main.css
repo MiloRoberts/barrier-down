@@ -103,7 +103,7 @@ body {
   border: 0;
   color: var(--color1);
   background-color: transparent;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: inherit;
   font-size: 7.4vw; /* previously 5vh */
   line-height: 14vh;
   height: max-content;
